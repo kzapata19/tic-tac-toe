@@ -6,7 +6,7 @@ describe Board do
 
     it "should print an empty board" do
 
-      empty_board = {a: [], b: [], c: []}
+      empty_board = {1 => [], 2 => [], 3 => []}
 
       expect(Board.new.create_board).to eq(empty_board)
     end
