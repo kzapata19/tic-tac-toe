@@ -1,44 +1,38 @@
 class Board
 
-  def create_board
-    {1 => [], 2 => [], 3 => []}
+  attr_accessor :board
+
+  def initialize(board)
+    @board = board
   end
 
-  def get_row(row_num)
-    create_board[row_num]
+  def get_target_row(row)
+    board[row]
   end
 
-  # def get_target_location(row, column)
-    # get_row(row)
-  # end
-
-  def row_length(row)
-    get_row(row).length
+  def find_target_location(row, column)
+    get_target_row(row)[column]
   end
 
-  # def iterate_board(board, method_name)
-  #   the_board = create_board
-  #   the_board.each do |row_key, row|
-  #     method_name(row_key, row)
-  #   end
-  # end
+  def play(symbol, row, column)
 
-  def empty_board(board)
-    empty = 0
+    location = find_target_location(row, column)
 
-    create_board.each do |key, row|
-      empty = row_length(row) + empty
+    if location == nil
+      get_target_row(row)[column] = symbol
+      "successfully placed '#{symbol}'"
+    else
+      "space occupied, provide a new location"
     end
 
-    empty == 0
   end
 
-  # def add_mark(mark, row, column)
-
-  # end
-
-  # def print_board(board)
-
-  # end
-
 end
+
+# board_structure = {1 => [], 2 => [], 3 =>[]}
+# my_board = Board.new(board_structure)
+
+# puts my_board
+# puts my_board.find_target_location(1,0)
+# puts my_board.play("X", 1, 0)
+# puts my_board.board
