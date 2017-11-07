@@ -1,7 +1,7 @@
 class Board
 
   def create_board
-    {1 => ["X","O","X"], 2 => [nil, "O"], 3 => [nil, "X"]}
+    {1 => [], 2 => [], 3 => []}
   end
 
   def get_row(row_num)
