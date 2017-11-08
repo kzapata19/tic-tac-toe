@@ -20,14 +20,15 @@ describe Player do
 
   end
 
-# #   context "if location is occupied" do
+  context "if location is occupied" do
 
-# #     player_1.mark_board(1, 0)
+    it "should ask for a new location" do
 
-# #     it "should ask for a new location" do
-# #       expect(player_1.mark_board(1, 0)).to eq("space occupied, find a new location")
-# #     end
+      player_1.mark_board(1, 0)
 
-# #   end
+      expect(player_1.mark_board(1, 0)).to eq("space occupied, find a new location")
+    end
+
+  end
 
 end
