@@ -37,4 +37,25 @@ describe Game do
                    ['X', nil, nil]]
     expect(@current_game.has_diagonal_win).to eq(true)
   end
+
+  it "should check for a tie" do
+    @board.grid = [['O', 'X', 'X'],
+                   ['X', 'O', 'O'],
+                   ['X', 'O', 'X']]
+    expect(@current_game.has_tie).to eq(true)
+  end
+
+  it "should check for a tie with empty spaces" do
+    @board.grid = [['O', 'X', 'X'],
+                   ['X', 'O', 'O'],
+                   ['X', 'O', nil]]
+    expect(@current_game.has_tie).to eq(false)
+  end
+
+  it "should check for a tie without empty spaces" do
+    @board.grid = [['O', 'O', 'X'],
+                   ['X', 'O', 'O'],
+                   ['X', 'O', 'X']]
+    expect(@current_game.has_tie).to eq(false)
+  end
 end

@@ -40,6 +40,20 @@ class Game
     winner
   end
 
+  def has_tie
+    emptySpace = false
+    board.grid.each do |row|
+      row.any? do |e|
+        emptySpace = emptySpace || e.nil?
+      end
+    end
+    !has_winner && !emptySpace
+  end
+
+  def has_winner
+    has_horizontal_win || has_vertical_win || has_diagonal_win
+  end
+
   def has_main_diagonal_win
     check_array = []
     target_index = 0
