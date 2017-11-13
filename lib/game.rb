@@ -40,8 +40,7 @@ class Game
     winner
   end
 
-  def has_diagonal_win
-    winner = false
+  def has_main_diagonal_win
     check_array = []
     target_index = 0
     board.grid.each do |row|
@@ -52,21 +51,26 @@ class Game
     if check_win(check_array)
       winner = true
     end
+    winner
+  end
 
-    if !winner
-      check_array = []
-      target_index = board.grid.length - 1
-      board.grid.each do |row|
-        check_array.push(row[target_index])
-        target_index = target_index - 1
-      end
-
-      if check_win(check_array)
-        winner = true
-      end
+  def has_antidiagonal_win
+    check_array = []
+    target_index = board.grid.length - 1
+    board.grid.each do |row|
+      check_array.push(row[target_index])
+      target_index = target_index - 1
     end
 
+    if check_win(check_array)
+      winner = true
+    end
     winner
+  end
+
+  def has_diagonal_win
+
+    has_main_diagonal_win || has_antidiagonal_win
 
   end
 
