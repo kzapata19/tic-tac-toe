@@ -22,17 +22,18 @@ class Game
   end
 
   def check_horizontal_win
-    winner = false
+    winner = nil
     board.grid.each do |row|
       if check_array_win(row)
-        winner = true
+        winner = row[0]
       end
     end
     winner
+
   end
 
   def check_vertical_win
-    winner = false
+    winner = nil
     board.grid.each_index do |col|
       check_array = []
       board.grid.each do |row|
@@ -40,7 +41,7 @@ class Game
       end
 
       if check_array_win(check_array)
-        winner = true
+        winner = check_array[0]
       end
     end
     winner
@@ -61,6 +62,7 @@ class Game
   end
 
   def check_main_diagonal_win
+    winner = nil
     check_array = []
     target_index = 0
     board.grid.each do |row|
@@ -69,12 +71,13 @@ class Game
     end
 
     if check_array_win(check_array)
-      winner = true
+      winner = check_array[0]
     end
     winner
   end
 
   def check_antidiagonal_win
+    winner = nil
     check_array = []
     target_index = board.grid.length - 1
     board.grid.each do |row|
@@ -83,7 +86,7 @@ class Game
     end
 
     if check_array_win(check_array)
-      winner = true
+      winner = check_array[0]
     end
     winner
   end
@@ -94,9 +97,9 @@ class Game
 
   end
 
-  def game_over
-    check_winner || check_tie
-  end
+  # def game_over
+  #   check_winner || check_tie
+  # end
 
 
 
