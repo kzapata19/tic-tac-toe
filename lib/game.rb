@@ -33,8 +33,8 @@ class Game
         check_array.push(row[col])
       end
 
-      if check_array.uniq.length == 1 && check_array.uniq[0] != nil
-          winner = true
+      if check_win(check_array)
+        winner = true
       end
     end
     winner
@@ -49,8 +49,8 @@ class Game
       target_index = target_index + 1
     end
 
-    if check_array.uniq.length == 1 && check_array.uniq[0] != nil
-        winner = true
+    if check_win(check_array)
+      winner = true
     end
 
     if !winner
@@ -61,7 +61,7 @@ class Game
         target_index = target_index - 1
       end
 
-      if check_array.uniq.length == 1 && check_array.uniq[0] != nil
+      if check_win(check_array)
         winner = true
       end
     end
