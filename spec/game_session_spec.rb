@@ -13,6 +13,10 @@ describe GameSession do
     expect(@game_session.start_game).to eq("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.")
   end
 
+  it "should ask Player 1 for their first move" do
+    expect(@game_session.).to eq()
+  end
+
   # it "should ask for Player 1's first move" do
 
   # end

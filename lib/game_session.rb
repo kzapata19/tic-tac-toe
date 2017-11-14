@@ -9,6 +9,7 @@ class GameSession
     @board = Board.new(3, 3)
     @rules = Rules.new(@board)
     @display = Display.new(@board)
+    self.start_game
   end
 
   def start_game
@@ -23,3 +24,4 @@ class GameSession
   #run Rules.check_win
 
 end
+
