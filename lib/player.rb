@@ -1,35 +1,17 @@
-require_relative "board"
-
+# require_relative "board"
+require 'pry'
 class Player
 
+  attr_reader :mark
 
+  def initialize(mark)
+    @mark = mark
+  end
 
-
-
-  # attr_reader :mark
-  # attr_accessor :board
-
-  # def initialize(board, mark)
-  #   @board = board
-  #   @mark = mark
-  # end
-
-
-  # def find_target_location(row, column)
-  #   board[row][column]
-  # end
-
-  # def mark_board(row, column)
-
-  #   space = find_target_location(row, column)
-
-  #   if space == nil
-  #     board[row][column] = mark
-  #     "successfully marked board"
-  #   else
-  #     "space occupied, find a new location"
-  #   end
-
-  # end
+#player should not need to know about board ideally, if so we can place in initializer
+  def mark_board(row, col, board)
+    board.grid[row][col] = @mark
+    board
+  end
 
 end

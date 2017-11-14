@@ -1,22 +1,18 @@
 require 'pry'
-
+#rename to Results, Games Rules
 class Game
-  attr_reader :board, :player1, :player2
+  attr_reader :board
 
-  def initialize(board, player1, player2)
+  def initialize(board)
     @board = board
-    @player1 = player1
-    @player2 = player2
   end
 
+#extract to another class
   def display_board
     p board.grid
   end
 
-  # def display_winner
-
-  # end
-
+#helper methods should be placed after the methods that use them
   def check_array_win(array)
     array.uniq.length == 1 && array.uniq[0] != nil
   end
@@ -96,16 +92,6 @@ class Game
     check_main_diagonal_win || check_antidiagonal_win
 
   end
-
-  # def game_over
-  #   check_winner || check_tie
-  # end
-
-
-
-
-
-
 
 end
 

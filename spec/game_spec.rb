@@ -2,9 +2,7 @@ describe Game do
 
   before(:each) do
     @board = Board.new(3, 3)
-    @player1 = Player.new("X")
-    @player2 = Player.new("O")
-    @current_game =  Game.new(@board, @player1, @player2)
+    @current_game =  Game.new(@board)
   end
 
   it "should display the board" do
@@ -59,50 +57,5 @@ describe Game do
                    ['X', 'O', 'X']]
     expect(@current_game.check_tie).to eq(false)
   end
-
-  # it "should check if game is over" do
-  #   @board.grid = [['O', 'O', 'X'],
-  #                  ['X', 'O', 'O'],
-  #                  ['X', 'O', 'X']]
-  #   expect(@current_game.game_over).to eq(true)
-  # end
-
-  # it "should check if game is over" do
-  #   @board.grid = [['X', 'X', 'X'],
-  #                  [nil, 'O', nil],
-  #                  ['O', 'O', 'X']]
-  #   expect(@current_game.game_over).to eq(true)
-  # end
-
-  #  it "should check if game is over" do
-  #   @board.grid = [['X', 'X', 'O'],
-  #                  [nil, nil, nil],
-  #                  ['O', 'O', 'X']]
-  #   expect(@current_game.game_over).to eq(false)
-  # end
-  # it "should display winner at end of game" do
-  #   @board.grid = [['O', 'O', 'X'],
-  #                  ['X', 'O', 'O'],
-  #                  ['X', 'O', 'X']]
-  #   expect(@current_game.display_winner).to eq("#{@player1.mark} won the game!")
-  # end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 end
