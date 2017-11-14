@@ -14,7 +14,12 @@ describe GameSession do
   end
 
   it "should ask Player 1 for their first move" do
-    expect(@game_session.).to eq()
+    expect(@game_session.provide_move(1, @player1)).to eq("
+     _X_|_2_|_3_\n
+        |   |
+     _4_|_5_|_6_\n
+        |   |
+     _7_|_8_|_9_\n")
   end
 
   # it "should ask for Player 1's first move" do

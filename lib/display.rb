@@ -1,18 +1,20 @@
 class Display
 
   attr_reader :board
+  attr_accessor :display_array
 
   def initialize(board)
     @board = board
+    @display_array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
   def display_board
-    print "
-     _1_|_2_|_3_\n
+   "
+     _#{@display_array[0]}_|_#{@display_array[1]}_|_#{@display_array[2]}_\n
         |   |
-     _4_|_5_|_6_\n
+     _#{@display_array[3]}_|_#{@display_array[4]}_|_#{@display_array[5]}_\n
         |   |
-     _7_|_8_|_9_\n"
+     _#{@display_array[6]}_|_#{@display_array[7]}_|_#{@display_array[8]}_\n"
   end
 
 
