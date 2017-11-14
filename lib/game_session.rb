@@ -1,7 +1,7 @@
 # this class will make players and board interact
 class GameSession
 
-  attr_accessor :player1, :player2, :board, :rules, :display
+  attr_accessor :player1, :player2, :board, :rules, :display, :translator
 
   def initialize(player1, player2, board, rules, display)
     @player1 = Player.new("X")
@@ -9,8 +9,9 @@ class GameSession
     @board = Board.new(3, 3)
     @rules = Rules.new(@board)
     @display = Display.new(@board)
+    @translator = setup_translator
     # self.start_game
-    self.translate_move_to_indexes
+
   end
 
   def start_game
@@ -23,17 +24,20 @@ class GameSession
     @display.display_board
   end
 
+  def update_board_grid(location, player)
+    coord = translator[location]
+    row =coord[0]
+    col = coord[1]
+
+    board.grid[row][col] = player.mark
+    board.grid
+  end
+
   def update_display_board(location, player)
     @display.display_array[location - 1] = player.mark
   end
 
-  def update_board_grid(location, player)
-
-
-
-  end
-
-  def translate_move_to_indexes
+  def setup_translator
     translator = {}
     key = 1
     column_length = (1..3).to_a
@@ -45,7 +49,7 @@ class GameSession
         key = key + 1
       end
     end
-    print translator
+    translator
   end
 
   #run Rules.check_win

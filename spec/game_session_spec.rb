@@ -22,6 +22,13 @@ describe GameSession do
      _7_|_8_|_9_\n")
   end
 
+  it "should mark the board's grid" do
+    expect(@game_session.update_board_grid(1, @player1)).to eq([['X', nil, nil], [nil, nil, nil], [nil, nil, nil]])
+  end
+
+  it "should mark the board's grid" do
+    expect(@game_session.update_board_grid(5, @player1)).to eq([[nil, nil, nil], [nil, 'X', nil], [nil, nil, nil]])
+  end
   # it "should ask for Player 1's first move" do
 
   # end
