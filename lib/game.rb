@@ -1,6 +1,6 @@
 require 'pry'
 #rename to Results, Games Rules
-class Game
+class Rules
   attr_reader :board
 
   def initialize(board)
@@ -13,14 +13,14 @@ class Game
   end
 
 #helper methods should be placed after the methods that use them
-  def check_array_win(array)
+  def array_win(array)
     array.uniq.length == 1 && array.uniq[0] != nil
   end
 
-  def check_horizontal_win
+  def horizontal_win
     winner = nil
     board.grid.each do |row|
-      if check_array_win(row)
+      if array_win(row)
         winner = row[0]
       end
     end
@@ -28,22 +28,22 @@ class Game
 
   end
 
-  def check_vertical_win
+  def vertical_win
     winner = nil
     board.grid.each_index do |col|
-      check_array = []
+      array = []
       board.grid.each do |row|
-        check_array.push(row[col])
+        array.push(row[col])
       end
 
-      if check_array_win(check_array)
-        winner = check_array[0]
+      if array_win(array)
+        winner = array[0]
       end
     end
     winner
   end
 
-  def check_tie
+  def tie
     emptySpace = false
     board.grid.each do |row|
       row.any? do |e|
@@ -54,42 +54,42 @@ class Game
   end
 
   def check_winner
-    check_horizontal_win || check_vertical_win || check_diagonal_win
+    horizontal_win || vertical_win || diagonal_win
   end
 
-  def check_main_diagonal_win
+  def main_diagonal_win
     winner = nil
-    check_array = []
+    array = []
     target_index = 0
     board.grid.each do |row|
-      check_array.push(row[target_index])
+      array.push(row[target_index])
       target_index = target_index + 1
     end
 
-    if check_array_win(check_array)
-      winner = check_array[0]
+    if array_win(array)
+      winner = array[0]
     end
     winner
   end
 
-  def check_antidiagonal_win
+  def antidiagonal_win
     winner = nil
-    check_array = []
+    array = []
     target_index = board.grid.length - 1
     board.grid.each do |row|
-      check_array.push(row[target_index])
+      array.push(row[target_index])
       target_index = target_index - 1
     end
 
-    if check_array_win(check_array)
-      winner = check_array[0]
+    if array_win(array)
+      winner = array[0]
     end
     winner
   end
 
-  def check_diagonal_win
+  def diagonal_win
 
-    check_main_diagonal_win || check_antidiagonal_win
+    main_diagonal_win || antidiagonal_win
 
   end
 
