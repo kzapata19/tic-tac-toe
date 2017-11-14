@@ -9,7 +9,9 @@ class Display
   end
 
   def display_board
-   "
+    # Add print for playing
+
+    "
      _#{@display_array[0]}_|_#{@display_array[1]}_|_#{@display_array[2]}_\n
         |   |
      _#{@display_array[3]}_|_#{@display_array[4]}_|_#{@display_array[5]}_\n
