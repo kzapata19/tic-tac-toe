@@ -5,10 +5,6 @@ describe Rules do
     @current_game =  Rules.new(@board)
   end
 
-  it "should display the board" do
-    expect(@current_game.display_board).to eq([[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]])
-  end
-
   it "should check for a horizontal win" do
     @board.grid = [['X', 'X', 'X'],
                    [nil, nil, nil],

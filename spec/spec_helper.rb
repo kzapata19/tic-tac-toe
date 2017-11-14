@@ -1,5 +1,5 @@
 require 'board'
 require 'player'
-require 'game'
+require 'rules'
 require 'game_session'
 require 'display'

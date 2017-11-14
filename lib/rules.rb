@@ -7,11 +7,6 @@ class Rules
     @board = board
   end
 
-#extract to another class
-  def display_board
-    p board.grid
-  end
-
 #helper methods should be placed after the methods that use them
   def array_win(array)
     array.uniq.length == 1 && array.uniq[0] != nil
