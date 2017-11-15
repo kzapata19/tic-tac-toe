@@ -1,3 +1,5 @@
+require 'pry'
+
 describe GameSession do
 
   before(:each) do
@@ -40,12 +42,13 @@ describe GameSession do
   it "should display 'X' as winner of game" do
     @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', 'O'], ['X', 'X', 'O']]
     expect(@game_session.current_board_status).to eq("Winner is X")
+
   end
 
-  # it "should display 'O' as winner of game" do
-  #   @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', nil], ['O', 'O', 'X']]
-  #   expect(@game_session.current_board_status).to eq("Winner is O")
-  # end
+  it "should display 'O' as winner of game" do
+    @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', nil], ['O', 'O', 'X']]
+    expect(@game_session.current_board_status).to eq("Winner is O")
+  end
 
   it "should switch player turns" do
     @game_session.switch_turns
