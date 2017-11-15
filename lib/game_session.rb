@@ -19,13 +19,13 @@ class GameSession
   def start_game
     p "Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'."
     @display.display_board
-    # provide_move(@current_player)
+    provide_move(@current_player) #uncomment
   end
 
   def provide_move(player)
     print "Player #{player.mark}'s turn: "
     location = 1
-    # location = gets.chomp.to_i
+    location = gets.chomp.to_i #uncomment
     update_board_grid(location, player)
     update_display_board(location, player)
     @display.display_board

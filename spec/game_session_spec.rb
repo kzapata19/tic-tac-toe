@@ -1,7 +1,6 @@
 describe GameSession do
 
   before(:each) do
-
     @player1 = Player.new("X")
     @player2 = Player.new("O")
     @board = Board.new(3, 3)
