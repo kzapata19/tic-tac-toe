@@ -1,12 +1,13 @@
 describe GameSession do
 
   before(:each) do
+
     @player1 = Player.new("X")
     @player2 = Player.new("O")
     @board = Board.new(3, 3)
     @rules = Rules.new(@board)
     @display = Display.new(@board)
-    @current_player = @player1
+    # @current_player = @player1
     @game_session = GameSession.new(@player1, @player2, @board, @rules, @display)
   end
 
@@ -24,10 +25,9 @@ describe GameSession do
   end
 
   it "should switch player turns" do
-    #p @current_player
     @game_session.switch_turns
-    #p @current_player
-    expect(@current_player).to eq(@player2)
+
+    expect(@game_session.current_player).to eq(@game_session.player2)
   end
 
   it "should mark the board's grid" do

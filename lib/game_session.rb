@@ -11,6 +11,7 @@ class GameSession
     @display = Display.new(@board)
     @translator = setup_translator
     @current_player = @player1
+    # binding.pry
     self.start_game
 
   end
@@ -18,7 +19,7 @@ class GameSession
   def start_game
     p "Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'."
     @display.display_board
-    #provide_move(@player1)
+    # provide_move(@current_player)
   end
 
   def provide_move(player)
@@ -31,9 +32,7 @@ class GameSession
   end
 
   def switch_turns
-    current_player != player1 ?
-      current_player = player2 :
-      current_player = player1
+    @current_player != player1 ? @current_player = player1 : @current_player = player2
   end
 
   def update_board_grid(location, player)
