@@ -32,10 +32,20 @@ describe GameSession do
   end
 
   it "should display current game status" do
-    @game_session.provide_move(@player1)
+    @game_session.provide_move(@player1) #this will be necessary once location = 1 is removed from game_session
 
     expect(@game_session.current_board_status).to eq("No winner or tie yet. Next..")
   end
+
+  it "should display 'X' as winner of game" do
+    @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', 'O'], ['X', 'X', 'O']]
+    expect(@game_session.current_board_status).to eq("Winner is X")
+  end
+
+  # it "should display 'O' as winner of game" do
+  #   @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', nil], ['O', 'O', 'X']]
+  #   expect(@game_session.current_board_status).to eq("Winner is O")
+  # end
 
   it "should switch player turns" do
     @game_session.switch_turns
