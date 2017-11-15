@@ -23,18 +23,24 @@ describe GameSession do
      _7_|_8_|_9_\n")
   end
 
-  it "should switch player turns" do
-    @game_session.switch_turns
-
-    expect(@game_session.current_player).to eq(@game_session.player2)
-  end
-
   it "should mark the board's grid" do
     expect(@game_session.update_board_grid(1, @player1)).to eq([['X', nil, nil], [nil, nil, nil], [nil, nil, nil]])
   end
 
   it "should mark the board's grid" do
     expect(@game_session.update_board_grid(5, @player1)).to eq([[nil, nil, nil], [nil, 'X', nil], [nil, nil, nil]])
+  end
+
+  it "should display current game status" do
+    @game_session.provide_move(@player1)
+
+    expect(@game_session.current_board_status).to eq("No winner or tie yet. Next..")
+  end
+
+  it "should switch player turns" do
+    @game_session.switch_turns
+
+    expect(@game_session.current_player).to eq(@game_session.player2)
   end
 
   # it "should ask for Player 1's first move" do

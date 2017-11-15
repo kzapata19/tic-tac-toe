@@ -64,5 +64,11 @@ class GameSession
   end
 
   #run Rules.check_win
+  def current_board_status
+    if !rules.check_winner || !rules.tie
+      "No winner or tie yet. Next.."
+    end
+  end
+
 
 end
