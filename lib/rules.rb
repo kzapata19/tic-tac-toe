@@ -1,5 +1,5 @@
 require 'pry'
-#rename to Results, Games Rules
+
 class Rules
   attr_reader :board
 
@@ -7,9 +7,8 @@ class Rules
     @board = board
   end
 
-#helper methods should be placed after the methods that use them
-  def array_win(array)
-    array.uniq.length == 1 && array.uniq[0] != nil
+  def check_winner
+    horizontal_win || vertical_win || diagonal_win
   end
 
   def horizontal_win
@@ -38,18 +37,8 @@ class Rules
     winner
   end
 
-  def tie
-    emptySpace = false
-    board.grid.each do |row|
-      row.any? do |e|
-        emptySpace = emptySpace || e.nil?
-      end
-    end
-    !check_winner && !emptySpace
-  end
-
-  def check_winner
-    horizontal_win || vertical_win || diagonal_win
+  def diagonal_win
+    main_diagonal_win || antidiagonal_win
   end
 
   def main_diagonal_win
@@ -82,12 +71,18 @@ class Rules
     winner
   end
 
-  def diagonal_win
+  def array_win(array)
+    array.uniq.length == 1 && array.uniq[0] != nil
+  end
 
-    main_diagonal_win || antidiagonal_win
-
+  def tie
+    emptySpace = false
+    board.grid.each do |row|
+      row.any? do |e|
+        emptySpace = emptySpace || e.nil?
+      end
+    end
+    !check_winner && !emptySpace
   end
 
 end
-
-
