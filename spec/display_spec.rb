@@ -1,8 +1,8 @@
 describe Display do
 
   before(:each) do
-    @board = Board.new(3, 3)
-    @display = Display.new(@board)
+    # @board = Board.new(3, 3)
+    @display = Display.new
   end
 
    it "should display the board" do

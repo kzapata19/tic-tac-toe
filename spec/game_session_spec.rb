@@ -7,7 +7,7 @@ describe GameSession do
     @player2 = Player.new("O")
     @board = Board.new(3, 3)
     @rules = Rules.new(@board)
-    @display = Display.new(@board)
+    @display = Display.new
     # @current_player = @player1
     @game_session = GameSession.new(@player1, @player2, @board, @rules, @display)
   end

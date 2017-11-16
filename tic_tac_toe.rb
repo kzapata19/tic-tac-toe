@@ -8,7 +8,7 @@ player1 = Player.new("X")
 player2 = Player.new("O")
 board = Board.new(3, 3)
 rules = Rules.new(board)
-display1 = Display.new(board)
+display1 = Display.new
 current_player = player1
 GameSession.new(player1, player2, board, rules, display1)
 

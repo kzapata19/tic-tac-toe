@@ -8,10 +8,9 @@ class GameSession
     @player2 = Player.new("O")
     @board = Board.new(3, 3)
     @rules = Rules.new(@board)
-    @display = Display.new(@board)
+    @display = Display.new
     @translator = setup_translator
     @current_player = @player1
-    # binding.pry
     self.start_game
 
   end
@@ -63,7 +62,6 @@ class GameSession
     @current_player != player1 ? @current_player = player1 : @current_player = player2
   end
 
-  #run Rules.check_win
   def current_board_status
     if rules.check_winner
       # @current_player = @player2 #for @current_player.mark to update, need to call switch_turns; test for O win will fail otherwise

@@ -1,5 +1,4 @@
 require 'pry'
-# binding.pry
 
 describe Board do
 
