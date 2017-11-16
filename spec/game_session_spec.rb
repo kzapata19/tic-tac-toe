@@ -17,12 +17,12 @@ describe GameSession do
   # end
 
   it "should ask Player 1 for their first move" do
-    expect(@game_session.get_player_move(@player1)).to eq("
+    expect(@game_session.get_player_move(@player1)).to eq("\n
      _X_|_2_|_3_\n
-        |   |
+
      _4_|_5_|_6_\n
-        |   |
-     _7_|_8_|_9_\n")
+
+     _7_|_8_|_9_\n\n")
   end
 
   it "should mark the board's grid" do
