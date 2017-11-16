@@ -18,13 +18,13 @@ class GameSession
   def start_game
     print "Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'."
     @display.display_board
-    # provide_move(@current_player) #comment for testing purposes
+    get_player_move(@current_player) #comment for testing purposes
   end
 
-  def provide_move(player)
+  def get_player_move(player)
     print "Player #{player.mark}'s turn: "
-    location = 1 # this is harcoded for testing purposes only - remove at end of project
-    # location = gets.chomp.to_i #comment for testing purposes
+    # location = 1 # this is harcoded for testing purposes only - remove at end of project
+    location = gets.chomp.to_i #comment for testing purposes
     update_board_grid(location, player)
     update_display_board(location, player)
     @display.display_board

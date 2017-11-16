@@ -17,7 +17,7 @@ describe GameSession do
   # end
 
   it "should ask Player 1 for their first move" do
-    expect(@game_session.provide_move(@player1)).to eq("
+    expect(@game_session.get_player_move(@player1)).to eq("
      _X_|_2_|_3_\n
         |   |
      _4_|_5_|_6_\n
@@ -34,7 +34,7 @@ describe GameSession do
   # end
 
   it "should display current game status" do
-    @game_session.provide_move(@player1) #this will be necessary once location = 1 is removed from game_session
+    @game_session.get_player_move(@player1) #this will be necessary once location = 1 is removed from game_session
 
     expect(@game_session.current_board_status).to eq("No winner or tie yet. Next..")
   end
