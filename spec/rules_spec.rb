@@ -9,28 +9,28 @@ describe Rules do
     @board.grid = [['X', 'X', 'X'],
                    [nil, nil, nil],
                    [nil, nil, nil]]
-    expect(@current_game.is_horizontal_win).to eq('X')
+    expect(@current_game.get_horizontal_winning_mark).to eq('X')
   end
 
   it "should check for a vertical win" do
     @board.grid = [['X', nil, nil],
                    ['X', nil, nil],
                    ['X', nil, nil]]
-    expect(@current_game.is_vertical_win).to eq('X')
+    expect(@current_game.get_vertical_winning_mark).to eq('X')
   end
 
   it "should check for a diagonal win" do
     @board.grid = [['X', nil, nil],
                    [nil, 'X', nil],
                    [nil, nil, 'X']]
-    expect(@current_game.is_diagonal_win).to eq('X')
+    expect(@current_game.get_diagonal_winning_mark).to eq('X')
   end
 
   it "should check for a diagonal win" do
     @board.grid = [[nil, nil, 'X'],
                    [nil, 'X', nil],
                    ['X', nil, nil]]
-    expect(@current_game.is_diagonal_win).to eq('X')
+    expect(@current_game.get_diagonal_winning_mark).to eq('X')
   end
 
   it "should check for a tie" do
