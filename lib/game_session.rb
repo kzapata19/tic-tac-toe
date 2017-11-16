@@ -66,9 +66,9 @@ class GameSession
     if rules.get_winning_mark
       # @current_player = @player2 #for @current_player.mark to update, need to call switch_turns; test for O win will fail otherwise
       "Winner is #{@current_player.mark}"
-    elsif rules.tie
+    elsif rules.is_tie
       "No winner. Tie game!"
-    else !rules.get_winning_mark || !rules.tie
+    else !rules.get_winning_mark || !rules.is_tie
       "No winner or tie yet. Next.."
     end
   end

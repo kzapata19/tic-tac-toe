@@ -8,10 +8,10 @@ class Rules
   end
 
   def get_winning_mark
-    horizontal_win || vertical_win || diagonal_win
+    is_horizontal_win || is_vertical_win || is_diagonal_win
   end
 
-  def horizontal_win
+  def is_horizontal_win
     winner = nil
     board.grid.each do |row|
       if array_win(row)
@@ -22,7 +22,7 @@ class Rules
 
   end
 
-  def vertical_win
+  def is_vertical_win
     winner = nil
     board.grid.each_index do |col|
       array = []
@@ -37,11 +37,11 @@ class Rules
     winner
   end
 
-  def diagonal_win
-    main_diagonal_win || antidiagonal_win
+  def is_diagonal_win
+    is_main_diagonal_win || is_antidiagonal_win
   end
 
-  def main_diagonal_win
+  def is_main_diagonal_win
     winner = nil
     array = []
     target_index = 0
@@ -56,7 +56,7 @@ class Rules
     winner
   end
 
-  def antidiagonal_win
+  def is_antidiagonal_win
     winner = nil
     array = []
     target_index = board.grid.length - 1
@@ -75,7 +75,7 @@ class Rules
     array.uniq.length == 1 && array.uniq[0] != nil
   end
 
-  def tie
+  def is_tie
     emptySpace = false
     board.grid.each do |row|
       row.any? do |e|
