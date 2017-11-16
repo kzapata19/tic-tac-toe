@@ -62,8 +62,10 @@ describe GameSession do
     expect(@game_session.current_player).to eq(@game_session.player2)
   end
 
-  # it "should ask for Player 1's first move" do
+  it "should ask for Player 2's move if no winner or tie" do
+    @game_session.run_game_loop
+    expect(@game_session.current_player).to eq(@game_session.player2)
+  end
 
-  # end
 
 end

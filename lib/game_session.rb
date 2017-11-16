@@ -18,16 +18,22 @@ class GameSession
   def start_game
     print "Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'."
     @display.display_board
-    get_player_move(@current_player) #comment for testing purposes
+    # get_player_move(@current_player) #comment for testing purposes
   end
 
   def get_player_move(player)
     print "Player #{player.mark}'s turn: "
-    # location = 1 # this is harcoded for testing purposes only - remove at end of project
-    location = gets.chomp.to_i #comment for testing purposes
+    location = 1 # this is harcoded for testing purposes only - remove at end of project
+    # location = gets.chomp.to_i #comment for testing purposes
+    # update_board_grid(location, player)
+    # update_display_board(location, player)
+    update_both_boards(location, player)
+    @display.display_board
+  end
+
+  def update_both_boards(location, player)
     update_board_grid(location, player)
     update_display_board(location, player)
-    @display.display_board
   end
 
   def update_board_grid(location, player)
@@ -71,6 +77,11 @@ class GameSession
     else !rules.get_winning_mark || !rules.is_tie
       "No winner or tie yet. Next.."
     end
+  end
+
+  def run_game_loop
+    @display_board
+
   end
 
 

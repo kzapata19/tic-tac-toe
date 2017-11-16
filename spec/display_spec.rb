@@ -4,7 +4,7 @@ describe Display do
     @display = Display.new
   end
 
-   it "should display the board" do
+   it "should display the current board" do
     expect(@display.display_board).to eq(
     "\n
      _1_|_2_|_3_\n
