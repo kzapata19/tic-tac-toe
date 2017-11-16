@@ -1,10 +1,8 @@
 class Display
 
-  # attr_reader :board
   attr_accessor :display_array
 
-  def initialize()
-    # @board = board
+  def initialize
     @display_array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
@@ -18,6 +16,5 @@ class Display
         |   |
      _#{@display_array[6]}_|_#{@display_array[7]}_|_#{@display_array[8]}_\n"
   end
-
 
 end

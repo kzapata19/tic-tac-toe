@@ -1,7 +1,6 @@
 describe Display do
 
   before(:each) do
-    # @board = Board.new(3, 3)
     @display = Display.new
   end
 
@@ -14,7 +13,5 @@ describe Display do
         |   |
      _7_|_8_|_9_\n")
   end
-
-
 
 end
