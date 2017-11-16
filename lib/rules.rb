@@ -7,7 +7,7 @@ class Rules
     @board = board
   end
 
-  def check_winner
+  def get_winning_mark
     horizontal_win || vertical_win || diagonal_win
   end
 
@@ -82,7 +82,7 @@ class Rules
         emptySpace = emptySpace || e.nil?
       end
     end
-    !check_winner && !emptySpace
+    !get_winning_mark && !emptySpace
   end
 
 end

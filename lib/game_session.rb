@@ -61,14 +61,14 @@ class GameSession
   def switch_turns
     @current_player = (@current_player = player1) ? player2 : player1
   end
-
+#consider moving this method to Display since printing to standard out (and any other UI-related methods)
   def current_board_status
-    if rules.check_winner
+    if rules.get_winning_mark
       # @current_player = @player2 #for @current_player.mark to update, need to call switch_turns; test for O win will fail otherwise
       "Winner is #{@current_player.mark}"
     elsif rules.tie
       "No winner. Tie game!"
-    else !rules.check_winner || !rules.tie
+    else !rules.get_winning_mark || !rules.tie
       "No winner or tie yet. Next.."
     end
   end
