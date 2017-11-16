@@ -1,11 +1,10 @@
 class Board
 
-  attr_accessor :row, :column, :grid
-# in future think about 1-D array?
-  def initialize(row, column)
-    @row = row
-    @column = column
-    @grid = Array.new(row){Array.new(column)}
+  attr_accessor :size, :grid
+
+  def initialize(size)
+    @size = size
+    @grid = Array.new(size){Array.new(size)}
   end
 
   def get_mark(row, col)

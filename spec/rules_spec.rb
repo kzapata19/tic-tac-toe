@@ -1,7 +1,7 @@
 describe Rules do
 
   before(:each) do
-    @board = Board.new(3, 3)
+    @board = Board.new(3)
     @current_game =  Rules.new(@board)
   end
 

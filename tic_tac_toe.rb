@@ -6,7 +6,7 @@ require './lib/display'
 
 player1 = Player.new("X")
 player2 = Player.new("O")
-board = Board.new(3, 3)
+board = Board.new(3)
 rules = Rules.new(board)
 display1 = Display.new
 current_player = player1

@@ -3,7 +3,7 @@
 
 describe Player do
   before(:each) do
-    @board = Board.new(3, 3)
+    @board = Board.new(3)
     @player1 = Player.new("X")
     @player2 = Player.new("O")
   end

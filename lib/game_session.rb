@@ -6,7 +6,7 @@ class GameSession
   def initialize(player1, player2, board, rules, display)
     @player1 = Player.new("X")
     @player2 = Player.new("O")
-    @board = Board.new(3, 3)
+    @board = Board.new(3)
     @rules = Rules.new(@board)
     @display = Display.new
     @translator = setup_translator
