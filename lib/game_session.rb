@@ -18,17 +18,39 @@ class GameSession
   def start_game
     print "Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'."
     @display.display_board
-    # get_player_move(@current_player) #comment for testing purposes
+    run_game_loop #comment out for tests
+  end
+
+  def run_game_loop
+    location = get_player_move(@current_player)
+    update_both_boards(location, @current_player)
+    @display.display_board
+    current_board_status
+  end
+#consider moving this method to Display since printing to standard out (and any other UI-related methods)
+  def current_board_status
+    if rules.get_winning_mark
+      # @current_player = @player2 #for @current_player.mark to update, need to call switch_turns; test for O win will fail otherwise
+      "Winner is #{@current_player.mark}"
+    elsif rules.is_tie
+      "No winner. Tie game!"
+    else !rules.get_winning_mark || !rules.is_tie
+      print "No winner or tie yet..."
+      switch_turns
+      run_game_loop
+    end
+  end
+
+  def switch_turns
+    @current_player != player1 ? @current_player = player1 : @current_player = player2
   end
 
   def get_player_move(player)
     print "Player #{player.mark}'s turn: "
-    location = 1 # this is harcoded for testing purposes only - remove at end of project
-    # location = gets.chomp.to_i #comment for testing purposes
-    # update_board_grid(location, player)
-    # update_display_board(location, player)
-    update_both_boards(location, player)
-    @display.display_board
+    # location = 1 # this is harcoded for testing purposes only - remove at end of project
+    location = gets.chomp.to_i #comment for testing purposes
+    # update_both_boards(location, player)
+    # @display.display_board
   end
 
   def update_both_boards(location, player)
@@ -64,25 +86,6 @@ class GameSession
     translator
   end
 
-  def switch_turns
-    @current_player = (@current_player = player1) ? player2 : player1
-  end
-#consider moving this method to Display since printing to standard out (and any other UI-related methods)
-  def current_board_status
-    if rules.get_winning_mark
-      # @current_player = @player2 #for @current_player.mark to update, need to call switch_turns; test for O win will fail otherwise
-      "Winner is #{@current_player.mark}"
-    elsif rules.is_tie
-      "No winner. Tie game!"
-    else !rules.get_winning_mark || !rules.is_tie
-      "No winner or tie yet. Next.."
-    end
-  end
-
-  def run_game_loop
-    @display_board
-
-  end
 
 
 end
