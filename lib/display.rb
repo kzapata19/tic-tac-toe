@@ -8,15 +8,18 @@ class Display
 
   def display_board
     # remove print for tests
-
-   "\n
+   display_message("\n
      _#{@display_array[0]}_|_#{@display_array[1]}_|_#{@display_array[2]}_\n
 
      _#{@display_array[3]}_|_#{@display_array[4]}_|_#{@display_array[5]}_\n
 
-     _#{@display_array[6]}_|_#{@display_array[7]}_|_#{@display_array[8]}_\n\n"
-     # string_board
+     _#{@display_array[6]}_|_#{@display_array[7]}_|_#{@display_array[8]}_\n\n")
+  end
 
+  # consider moving this method to Display since printing to standard out (and any other UI-related methods)
+
+  def display_message(msg)
+    print msg # add print to display on terminal
   end
 
 end

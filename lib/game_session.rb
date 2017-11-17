@@ -12,48 +12,41 @@ class GameSession
     @translator = setup_translator
     @current_player = @player1
     self.start_game
-
   end
 
   def start_game
-    print "Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'."
+    @display.display_message("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.")
     @display.display_board
-    # run_game_loop #comment out for tests
+    run_game_loop #comment out for tests
   end
 
   def run_game_loop
-    location = get_player_move(@current_player)
+    location = get_player_move
     update_both_boards(location, @current_player)
     @display.display_board
     display_current_board_status
   end
 
-#consider moving this method to Display since printing to standard out (and any other UI-related methods)
-
   def display_current_board_status
     if rules.get_winning_mark
-      get_board_status_msg("Winner is #{@current_player.mark}\n")
+      @display.display_message("Winner is #{@current_player.mark}\n")
     elsif rules.is_tie
-      get_board_status_msg("No winner. Tie game!\n")
+      @display.display_message("No winner. Tie game!\n")
     else !rules.get_winning_mark || !rules.is_tie
-      get_board_status_msg("No winner or tie yet...")
+      @display.display_message("No winner or tie yet...")
       switch_turns
       run_game_loop
     end
-  end
-
-  def get_board_status_msg(msg)
-    msg # add print to display on terminal
   end
 
   def switch_turns
     @current_player != player1 ? @current_player = player1 : @current_player = player2
   end
 
-  def get_player_move(player)
-    print "Player #{player.mark}'s turn: "
-    location = 1 # this is harcoded for tests only
-    # location = gets.chomp.to_i #comment out for tests
+  def get_player_move
+    @display.display_message("Player #{@current_player.mark}'s turn: ")
+    # location = 1 # this is harcoded for tests only
+    location = gets.chomp.to_i #comment out for tests
   end
 
   def update_both_boards(location, player)
