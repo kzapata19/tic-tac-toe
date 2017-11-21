@@ -7,4 +7,8 @@ class Player
     @mark = mark
   end
 
+  def provide_move
+    location = gets.chomp.to_i
+  end
+
 end

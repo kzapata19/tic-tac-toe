@@ -32,14 +32,14 @@ describe GameSession do
 
   it "should display 'X' as winner of game" do
     @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', 'O'], ['X', 'X', 'O']]
-    expect(@game_session.display_current_board_status).to eq("Winner is X\n")
+    expect(@game_session.display_current_board_status).to eq("X is the winner!\n")
 
   end
 
   it "should display 'O' as winner of game" do
     @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', nil], ['O', 'O', 'X']]
     @current_player = @player2
-    expect(@game_session.display_current_board_status).to eq("Winner is O\n")
+    expect(@game_session.display_current_board_status).to eq("O is the winner!\n")
   end
 
   it "should display a tie message" do

@@ -17,7 +17,7 @@ class GameSession
   def start_game
     @display.display_message("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.")
     @display.display_board
-    run_game_loop #comment out for tests
+    # run_game_loop #comment out for tests
   end
 
   def run_game_loop
@@ -29,7 +29,7 @@ class GameSession
 
   def display_current_board_status
     if rules.get_winning_mark
-      @display.display_message("Winner is #{@current_player.mark}\n")
+      @display.display_message("#{@current_player.mark} is the winner!\n")
     elsif rules.is_tie
       @display.display_message("No winner. Tie game!\n")
     else !rules.get_winning_mark || !rules.is_tie
@@ -45,8 +45,8 @@ class GameSession
 
   def get_player_move
     @display.display_message("Player #{@current_player.mark}'s turn: ")
-    # location = 1 # this is harcoded for tests only
-    location = gets.chomp.to_i #comment out for tests
+    location = 1 # this is harcoded for tests only
+    @current_player.provide_move
   end
 
   def update_both_boards(location, player)
