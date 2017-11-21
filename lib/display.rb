@@ -18,13 +18,11 @@ class Display
   # consider moving this method to Display since printing to standard out (and any other UI-related methods)
 
   def display_message(msg)
-
     display_output = StringIO.new(msg)
     $stdout = display_output
     $stdout.string
     STDOUT.print $stdout.string # remove print for tests
     $stdout.read
-
   end
 
 end

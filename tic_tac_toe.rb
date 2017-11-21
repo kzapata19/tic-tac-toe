@@ -10,7 +10,8 @@ board = Board.new(3)
 rules = Rules.new(board)
 display1 = Display.new
 current_player = player1
-GameSession.new(player1, player2, board, rules, display1)
+game_session = GameSession.new(player1, player2, board, rules, display1)
+game_session.start_game
 
 =begin
   to play game in terminal

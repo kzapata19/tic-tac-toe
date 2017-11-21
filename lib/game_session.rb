@@ -11,7 +11,6 @@ class GameSession
     @display = Display.new
     @translator = setup_translator
     @current_player = @player2
-    self.start_game
   end
 
   def start_game
@@ -26,8 +25,6 @@ class GameSession
     update_both_boards(location, @current_player)
     @display.display_board
     display_current_board_status
-
-
   end
 
   def display_current_board_status
@@ -37,7 +34,6 @@ class GameSession
       @display.display_message("No winner. Tie game!\n")
     else !rules.get_winning_mark || !rules.is_tie
       @display.display_message("No winner or tie yet...")
-      # switch_turns
       run_game_loop
     end
   end
