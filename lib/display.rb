@@ -7,7 +7,6 @@ class Display
   end
 
   def display_board
-    # remove print for tests
     display_message("\n
      _#{@display_array[0]}_|_#{@display_array[1]}_|_#{@display_array[2]}_\n
 
@@ -23,8 +22,8 @@ class Display
     display_output = StringIO.new(msg)
     $stdout = display_output
     $stdout.string
-    # STDOUT.print $stdout.string
-    return $stdout.read
+    STDOUT.print $stdout.string # remove print for tests
+    $stdout.read
 
   end
 

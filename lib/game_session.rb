@@ -10,21 +10,24 @@ class GameSession
     @rules = Rules.new(@board)
     @display = Display.new
     @translator = setup_translator
-    @current_player = @player1
+    @current_player = @player2
     self.start_game
   end
 
   def start_game
     @display.display_message("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.")
     @display.display_board
-    # run_game_loop #comment out for tests
+    run_game_loop #comment out for tests
   end
 
   def run_game_loop
+    switch_turns
     location = get_player_move
     update_both_boards(location, @current_player)
     @display.display_board
     display_current_board_status
+
+
   end
 
   def display_current_board_status
@@ -34,7 +37,7 @@ class GameSession
       @display.display_message("No winner. Tie game!\n")
     else !rules.get_winning_mark || !rules.is_tie
       @display.display_message("No winner or tie yet...")
-      switch_turns
+      # switch_turns
       run_game_loop
     end
   end
@@ -45,7 +48,7 @@ class GameSession
 
   def get_player_move
     @display.display_message("Player #{@current_player.mark}'s turn: ")
-    location = 1 # this is harcoded for tests only
+    # location = 1 # this is harcoded for tests only
     @current_player.provide_move
   end
 

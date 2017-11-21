@@ -1,5 +1,6 @@
 require 'pry'
 
+#ISSUE: everytime GameSession is instantiated, the self.start_game loop runs (for each test- total of 5)
 describe GameSession do
 
   before(:each) do
@@ -22,13 +23,10 @@ describe GameSession do
   #    _7_|_8_|_9_\n\n")
   # end
 
+#FAILING: got: [["X", "O", nil], [nil, "X", "O"], [nil, nil, "X"]]
   it "should mark the board's grid" do
     expect(@game_session.update_board_grid(1, @player1)).to eq([['X', nil, nil], [nil, nil, nil], [nil, nil, nil]])
   end
-# TODO: test other edge cases like if player submits nil
-  # it "should mark the board's grid" do
-  #   expect(@game_session.update_board_grid(5, @player1)).to eq([[nil, nil, nil], [nil, 'X', nil], [nil, nil, nil]])
-  # end
 
   it "should display 'X' as winner of game" do
     @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', 'O'], ['X', 'X', 'O']]
@@ -36,6 +34,7 @@ describe GameSession do
 
   end
 
+#FAILING: got: "X is the winner!\n"
   it "should display 'O' as winner of game" do
     @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', nil], ['O', 'O', 'X']]
     @current_player = @player2
