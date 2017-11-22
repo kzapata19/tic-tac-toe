@@ -1,3 +1,4 @@
+require 'pry'
 class Display
 
   attr_accessor :display_array, :display_message
@@ -15,14 +16,9 @@ class Display
      _#{@display_array[6]}_|_#{@display_array[7]}_|_#{@display_array[8]}_\n\n")
   end
 
-  # consider moving this method to Display since printing to standard out (and any other UI-related methods)
-
   def display_message(msg)
-    display_output = StringIO.new(msg)
-    $stdout = display_output
-    $stdout.string
-    STDOUT.print $stdout.string # remove print for tests
-    $stdout.read
+    $stdout = StringIO.new(msg)
+    STDOUT.print $stdout.string
   end
 
 end
