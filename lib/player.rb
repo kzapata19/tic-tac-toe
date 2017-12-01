@@ -1,6 +1,6 @@
 class Player
 
-  attr_accessor :mark, :input
+  attr_reader :mark, :input
 
   def initialize(mark, input=STDIN)
     @mark = mark
