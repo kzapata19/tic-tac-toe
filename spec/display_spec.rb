@@ -1,18 +1,22 @@
 describe Display do
 
   before(:each) do
-    @display = Display.new
+    @board = Board.new
+    @output = StringIO.new
+    @display1 = Display.new(@board, @output)
   end
 
-   it "should display the current board" do
+  context "at the start of the game" do
+    it "should display an empty board" do
+      @display1.display_board
+      expect(@output.string).to eq(
+      "\n_1_|_2_|_3_\n\n_4_|_5_|_6_\n\n_7_|_8_|_9_\n\n")
+    end
+  end
 
-    expect(@display.display_board).to eq(
-    "\n
-     _1_|_2_|_3_\n
-
-     _4_|_5_|_6_\n
-
-     _7_|_8_|_9_\n\n")
+  it "should display message" do
+    @display1.display_message("Welcome to TicTacToe!")
+    expect(@output.string).to eq("Welcome to TicTacToe!")
   end
 
 end

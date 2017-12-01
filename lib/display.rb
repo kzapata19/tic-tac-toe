@@ -1,24 +1,20 @@
-require 'pry'
 class Display
 
-  attr_accessor :display_array, :display_message
+  attr_accessor :board, :output, :board_numbers
 
-  def initialize
-    @display_array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  def initialize(board, output=STDOUT)
+    @board = board
+    @output = output
+    @board_numbers = (1..board.size**2).to_a
   end
 
   def display_board
-    display_message("\n
-     _#{@display_array[0]}_|_#{@display_array[1]}_|_#{@display_array[2]}_\n
-
-     _#{@display_array[3]}_|_#{@display_array[4]}_|_#{@display_array[5]}_\n
-
-     _#{@display_array[6]}_|_#{@display_array[7]}_|_#{@display_array[8]}_\n\n")
+    display_message(
+     "\n_#{@board_numbers[0]}_|_#{@board_numbers[1]}_|_#{@board_numbers[2]}_\n\n_#{@board_numbers[3]}_|_#{@board_numbers[4]}_|_#{@board_numbers[5]}_\n\n_#{@board_numbers[6]}_|_#{@board_numbers[7]}_|_#{@board_numbers[8]}_\n\n")
   end
 
   def display_message(msg)
-    $stdout = StringIO.new(msg)
-    STDOUT.print $stdout.string
+    @output.print msg
   end
 
 end
