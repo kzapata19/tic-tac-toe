@@ -1,14 +1,11 @@
 class Board
 
-  attr_accessor :size, :grid
+  attr_reader :size
+  attr_accessor :grid
 
-  def initialize(size)
+  def initialize(size=3)
     @size = size
     @grid = Array.new(size){Array.new(size)}
   end
-
-  # def get_mark(row, col)
-  #   grid[row][col]
-  # end
 
 end
