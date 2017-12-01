@@ -1,20 +1,15 @@
-require 'pry'
 class Player
 
-  attr_reader :mark
+  attr_accessor :mark, :input
 
-  def initialize(mark)
+  def initialize(mark, input=STDIN)
     @mark = mark
+    @input = input
   end
 
-  def provide_move(display1)
-    location = gets.chomp.to_i
-    if location.integer? && location.between?(1,9)
-      location
-    else
-      display1.display_message("Please enter an integer between 1 and 9 (inclusive): ")
-      provide_move(display1)
-    end
+  def provide_move
+    #move to Display class?
+    board_location = @input.gets.to_i
   end
 
 end

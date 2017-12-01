@@ -1,16 +1,13 @@
-# Chapter 6 in Beginnig Ruby
-# look up let
-
 describe Player do
+
   before(:each) do
-    @board = Board.new(3)
-    @player1 = Player.new("X")
-    @player2 = Player.new("O")
+    @input = StringIO.new
+    @player1 = Player.new("X", @input)
   end
 
-  # it "should mark the board" do
-  #   new_board = @player1.send_move(0, 0)
-  #   expect(new_board.get_mark(0, 0)).to eq("X")
-  # end
+  it "provides board move" do
+    @input.string = "1"
+    expect(@player1.provide_move).to eq(1)
+  end
 
 end
