@@ -7,8 +7,8 @@ require './lib/display'
 
 player1 = Player.new("X")
 player2 = Player.new("O")
-board = Board.new(3)
+board = Board.new
 rules = Rules.new(board)
 display1 = Display.new(board)
 game_session = GameSession.new(player1, player2, board, rules, display1)
-game_session.run_game_loop
+game_session.start_game

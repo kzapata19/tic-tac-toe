@@ -84,6 +84,4 @@ class Rules
     moves.uniq.length == 1 && moves.uniq[0] != nil
   end
 
-
-
 end

@@ -8,7 +8,6 @@ class Player
   end
 
   def provide_move
-    #move to Display class?
     board_location = @input.gets.to_i
   end
 

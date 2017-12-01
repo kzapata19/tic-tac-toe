@@ -1,7 +1,6 @@
 class Board
 
-  attr_reader :size
-  attr_accessor :grid
+  attr_accessor :size, :grid
 
   def initialize(size=3)
     @size = size

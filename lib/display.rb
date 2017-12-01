@@ -1,6 +1,6 @@
 class Display
 
-  attr_accessor :board, :output, :board_numbers
+  attr_reader :board, :output, :board_numbers
 
   def initialize(board, output=STDOUT)
     @board = board
