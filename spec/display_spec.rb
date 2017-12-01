@@ -14,7 +14,7 @@ describe Display do
     end
   end
 
-  it "should display message" do
+  it "should display given message" do
     @display1.display_message("Welcome to TicTacToe!")
     expect(@output.string).to eq("Welcome to TicTacToe!")
   end
