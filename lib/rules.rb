@@ -1,5 +1,3 @@
-require 'pry'
-
 class Rules
   attr_reader :board
 
@@ -11,6 +9,17 @@ class Rules
     get_horizontal_winning_mark || get_vertical_winning_mark || get_diagonal_winning_mark
   end
 
+  def is_tie?
+    emptySpace = false
+    board.grid.each do |row|
+      row.any? do |e|
+        emptySpace = emptySpace || e.nil?
+      end
+    end
+    !get_winning_mark && !emptySpace
+  end
+
+  private
   def get_horizontal_winning_mark
     winner = nil
     board.grid.each do |row|
@@ -75,14 +84,6 @@ class Rules
     moves.uniq.length == 1 && moves.uniq[0] != nil
   end
 
-  def is_tie
-    emptySpace = false
-    board.grid.each do |row|
-      row.any? do |e|
-        emptySpace = emptySpace || e.nil?
-      end
-    end
-    !get_winning_mark && !emptySpace
-  end
+
 
 end
