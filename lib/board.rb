@@ -24,7 +24,3 @@ class Board
   end
 
 end
-
-# board1 = Board.new(1)
-# p board1.grid
-# p board1.create_grid
