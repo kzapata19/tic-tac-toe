@@ -2,7 +2,7 @@ class Rules
   attr_reader :board
 
   def initialize(board)
-    @board = board
+    @board = board.grid
   end
 
   def get_winning_mark
@@ -11,7 +11,7 @@ class Rules
 
   def is_tie?
     emptySpace = false
-    board.grid.each do |row|
+    board.each do |row|
       row.any? do |e|
         emptySpace = emptySpace || e.nil?
       end
@@ -22,7 +22,7 @@ class Rules
   private
   def get_horizontal_winning_mark
     winner = nil
-    board.grid.each do |row|
+    board.each do |row|
       if get_mark(row)
         winner = row[0]
       end
@@ -33,9 +33,9 @@ class Rules
 
   def get_vertical_winning_mark
     winner = nil
-    board.grid.each_index do |col|
+    board.each_index do |col|
       array = []
-      board.grid.each do |row|
+      board.each do |row|
         array.push(row[col])
       end
 
@@ -54,7 +54,7 @@ class Rules
     winner = nil
     array = []
     target_index = 0
-    board.grid.each do |row|
+    board.each do |row|
       array.push(row[target_index])
       target_index = target_index + 1
     end
@@ -68,8 +68,8 @@ class Rules
   def get_antidiagonal_winning_mark
     winner = nil
     array = []
-    target_index = board.grid.length - 1
-    board.grid.each do |row|
+    target_index = board.length - 1
+    board.each do |row|
       array.push(row[target_index])
       target_index = target_index - 1
     end
