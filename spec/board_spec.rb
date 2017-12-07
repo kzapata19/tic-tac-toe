@@ -31,4 +31,9 @@ describe Board do
     expect(board.size).to eq(4)
   end
 
+  it "should create the game board" do
+    board = Board.new(4)
+    expect(board.game_board).to eq("\n_1_|_2_|_3_|_4_|\n\n_5_|_6_|_7_|_8_|\n\n_9_|_10_|_11_|_12_|\n\n_13_|_14_|_15_|_16_|\n\n")
+  end
+
 end
