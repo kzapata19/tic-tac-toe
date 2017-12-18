@@ -13,7 +13,7 @@ class Display
 
   def get_board_size
     display_message("Please provide a number for the board size to build a proportional board: ")
-    save_player_input
+    get_player_input.to_i
   end
 
   def print_current_player_turn(player)
@@ -36,7 +36,7 @@ class Display
     @output.print msg
   end
 
-  def save_player_input
+  def get_player_input
     @input.gets
   end
 

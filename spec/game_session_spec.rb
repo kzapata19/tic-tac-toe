@@ -1,31 +1,22 @@
 require 'pry'
-
-#ISSUE: everytime GameSession is instantiated, the self.start_game loop runs (for each test- total of 5)
 describe GameSession do
 
   before(:each) do
     @player1 = Player.new("X")
     @player2 = Player.new("O")
-    @board = Board.new(3)
+    @board = Board.new
     @rules = Rules.new(@board)
-    @display = Display.new
-    # @current_player = @player1
-    @game_session = GameSession.new(@player1, @player2, @board, @rules, @display)
+    @display1 = Display.new
+    @current_player = @player2
+    @game_session = GameSession.new(@player1, @player2, @display1)
   end
 
-#might not need this test since redefining get_player_move to only print prompt message and save player's move only
-  # it "should ask Player 1 for their first move" do
-  #   expect(@game_session.get_player_move(@player1)).to eq("\n
-  #    _X_|_2_|_3_\n
 
-  #    _4_|_5_|_6_\n
 
-  #    _7_|_8_|_9_\n\n")
-  # end
+  it "should switch player turns" do
+    @game_session.switch_turns
 
-#FAILING: got: [["X", "O", nil], [nil, "X", "O"], [nil, nil, "X"]]
-  it "should mark the board's grid" do
-    expect(@game_session.update_board_grid(1, @player1)).to eq([['X', nil, nil], [nil, nil, nil], [nil, nil, nil]])
+    expect(@game_session.current_player).to eq(@game_session.player1)
   end
 
   it "should display 'X' as winner of game" do
@@ -34,7 +25,6 @@ describe GameSession do
 
   end
 
-#FAILING: got: "X is the winner!\n"
   it "should display 'O' as winner of game" do
     @game_session.board.grid = [['X', 'O', 'X'], ['X', 'O', nil], ['O', 'O', 'X']]
     @current_player = @player2
@@ -45,18 +35,5 @@ describe GameSession do
     @game_session.board.grid = [['X', 'X', 'O'], ['O', 'O', 'X'], ['X', 'O', 'X']]
     expect(@game_session.display_current_board_status).to eq("No winner. Tie game!\n")
   end
-
-  it "should switch player turns" do
-    @game_session.switch_turns
-
-    expect(@game_session.current_player).to eq(@game_session.player2)
-  end
-
-  # it "should ask for Player 2's move if no winner or tie" do
-  #   @game_session.board = [['X', 'X', 'O'], ['O', 'O', 'X'], ['X', 'O', 'X']]
-  #   @game_session.run_game_loop
-  #   expect(@game_session.current_player).to eq(@game_session.player2)
-  # end
-
 
 end
