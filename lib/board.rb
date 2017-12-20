@@ -16,7 +16,7 @@ class Board
 
   def initialize(size=3)
     @size = size
-    # self.check_board_size
+    self.check_board_size
     @grid = Array.new(@size){Array.new(@size)}
     @board_numbers = (1..@size**2).to_a
     @game_board = create_board
@@ -24,23 +24,13 @@ class Board
 
   def check_board_size
     if @size < 3
-      begin
-        raise VoidBoardSizeError.new("Board size must be positive integer greater than 2.")
-      rescue VoidBoardSizeError => e
-        puts e.message
-      end
+      raise VoidBoardSizeError.new("Board size must be a positive integer greater than 2.")
     end
   end
-
-  # def create_grid
-  #   Array.new(@size){Array.new(@size)}
-  # end
-
 
   def create_board
     board = "\n"
     board_numbers = format_numbers
-    # length = board_numbers.length
 
     board_numbers.each do |number|
       if (number.to_i) % @size == 0
@@ -52,14 +42,14 @@ class Board
     board
   end
 
-  def prepend_leading_zero(number)
-    "%02d" % number if number.digits.count == 1
-  end
-
   def format_numbers
-    @board_numbers.to_a.reduce([]) do|formatted, number|
+    @board_numbers.reduce([]) do|formatted, number|
       formatted.push(prepend_leading_zero(number) || number)
     end
+  end
+
+  def prepend_leading_zero(number)
+    "%02d" % number if number.digits.count == 1
   end
 
 end
