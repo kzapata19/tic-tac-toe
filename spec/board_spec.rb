@@ -1,5 +1,3 @@
-require 'pry'
-
 describe Board do
 
   context "at the start of the game" do
