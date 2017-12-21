@@ -23,9 +23,7 @@ class Board
   end
 
   def check_board_size
-    if @size < 3
-      raise VoidBoardSizeError.new("Board size must be a positive integer greater than 2.")
-    end
+    raise VoidBoardSizeError.new("Board size must be a positive integer greater than 2.") if @size < 3
   end
 
   def create_board
