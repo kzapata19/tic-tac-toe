@@ -32,6 +32,7 @@ class Board
 
     board_numbers.each do |number|
       if (number.to_i) % @size == 0
+      # if number % @size == 0
         board = board + "_#{number}_|" + "\n\n"
       else
         board = board + "_#{number}_|"

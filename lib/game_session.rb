@@ -69,7 +69,7 @@ class GameSession
   def update_display_board(location, player)
     updated_board = ""
     location_str = location.to_s
-    @board.game_board.each_char do |char, index|
+    @board.game_board.each_char do |char|
       if char == location_str
         updated_board = updated_board + player.mark
       else
@@ -77,7 +77,6 @@ class GameSession
       end
     end
     @board.game_board = updated_board
-
   end
 
   def setup_translator
