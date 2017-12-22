@@ -1,4 +1,3 @@
-require 'pry'
 describe GameSession do
 
   before(:each) do

@@ -32,7 +32,6 @@ class Board
 
     board_numbers.each do |number|
       if (number.to_i) % @size == 0
-      # if number % @size == 0
         board = board + "_#{number}_|" + "\n\n"
       else
         board = board + "_#{number}_|"
@@ -52,8 +51,3 @@ class Board
   end
 
 end
-
-# myBoard = Board.new(3)
-# p "this is the grid: #{myBoard.grid}"
-# print "this the game board: \n #{myBoard.game_board}"
-# p "these are the board numbers: #{myBoard.board_numbers}"

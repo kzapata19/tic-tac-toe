@@ -10,5 +10,3 @@ display1 = Display.new
 
 game_session = GameSession.new(player1, player2, display1)
 game_session.start_game
-
-# p "this is the game_board for real: #{game_session.board.game_board}"
