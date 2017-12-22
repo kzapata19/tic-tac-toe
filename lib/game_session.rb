@@ -67,15 +67,17 @@ class GameSession
 
 #reason why display board is not updating with grid state:
   def update_display_board(location, player)
-    # @board.board_numbers[location - 1] = player.mark
-    # updated_board = ""
-    # location_str = location.to_s
-    # @board.game_board.each_char do |char, index|
-    #   if char == location
-    #     char = player.mark
-    #   end
-    # end
-    # updated_board
+    updated_board = ""
+    location_str = location.to_s
+    @board.game_board.each_char do |char, index|
+      if char == location_str
+        updated_board = updated_board + player.mark
+      else
+        updated_board = updated_board + char
+      end
+    end
+    @board.game_board = updated_board
+
   end
 
   def setup_translator
