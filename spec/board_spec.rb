@@ -1,3 +1,5 @@
+require 'pry'
+
 describe Board do
 
   context "at the start of the game" do
@@ -30,6 +32,7 @@ describe Board do
 
   it "should create the game board" do
     @board = Board.new(4)
+    binding.pry
     expect(@board.game_board).to eq("\n_01_|_02_|_03_|_04_|\n\n_05_|_06_|_07_|_08_|\n\n_09_|_10_|_11_|_12_|\n\n_13_|_14_|_15_|_16_|\n\n")
   end
 

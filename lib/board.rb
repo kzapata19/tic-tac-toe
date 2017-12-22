@@ -51,3 +51,8 @@ class Board
   end
 
 end
+
+# myBoard = Board.new(3)
+# p "this is the grid: #{myBoard.grid}"
+# print "this the game board: \n #{myBoard.game_board}"
+# p "these are the board numbers: #{myBoard.board_numbers}"

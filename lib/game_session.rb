@@ -1,28 +1,5 @@
-# # this class will orchestrate interactions between all classes
-
-# require './lib/validation'
-
-=begin
-module Validation
-
-  def self.handle_player_input(error_msg, action,player_input)
-    if !valid_player_input?(player_input)
-      error_msg
-      action
-    else
-      player_input
-    end
-  end
-
-  def self.valid_player_input?(player_input)
-    player_input.integer? && player_input.between?(1,9)
-  end
-
-end
-=end
-
 class GameSession
-  # extend Validation
+
   attr_accessor :player1, :player2, :display1, :translator, :current_player, :board_size, :board, :rules
 
   def initialize(player1, player2, display1)
@@ -90,14 +67,16 @@ class GameSession
 
 #reason why display board is not updating with grid state:
   def update_display_board(location, player)
-    @board.board_numbers[location - 1] = player.mark
-
+    # @board.board_numbers[location - 1] = player.mark
+    # updated_board = ""
+    # location_str = location.to_s
+    # @board.game_board.each_char do |char, index|
+    #   if char == location
+    #     char = player.mark
+    #   end
+    # end
+    # updated_board
   end
-
-#previous implementation of display board
-   # def update_display_board(location, player)
-   #   @display.display_array[location - 1] = player.mark
-   # end
 
   def setup_translator
     translator = {}
