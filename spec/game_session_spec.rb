@@ -4,14 +4,12 @@ describe GameSession do
   before(:each) do
     @player1 = Player.new("X")
     @player2 = Player.new("O")
-    @board = Board.new
+    @board = Board.new(3)
     @rules = Rules.new(@board)
     @display1 = Display.new
     @current_player = @player2
     @game_session = GameSession.new(@player1, @player2, @display1)
   end
-
-
 
   it "should switch player turns" do
     @game_session.switch_turns

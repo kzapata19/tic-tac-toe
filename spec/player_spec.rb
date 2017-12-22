@@ -25,8 +25,10 @@ describe Player do
     expect(@player1.provide_move(@board.size)).to eq(1)
   end
 
-  # it "should raise an error if move is outside game board size" do
-
-  # end
+  it "should raise an error if move is outside game board size" do
+    @input.string = "17"
+    @board = Board.new(4)
+    expect {@player1.provide_move(@board.size)}.to raise_error(Player::VoidMoveError)
+  end
 
 end

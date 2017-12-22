@@ -1,12 +1,18 @@
 class Player
 
-  class VoidMove < StandardError
+  class VoidMoveError < StandardError
+    def initialize(message)
+      super(message)
+    end
   end
 
-  class VoidBoardSize < StandardError
+  class VoidBoardSizeError < StandardError
+    def initialize(message)
+      super(message)
+    end
   end
 
-  attr_reader :mark, :input
+  attr_accessor :mark, :input
 
   def initialize(mark, input=STDIN)
     @mark = mark
@@ -18,7 +24,7 @@ class Player
     if board_location.integer? && board_location.between?(1, size)
       board_location
     else
-      raise VoidMove
+      raise VoidMoveError.new("Provide a number between 1 and #{size} inclusive")
     end
   end
 
@@ -26,8 +32,8 @@ class Player
     board_size = @input.gets.to_i
     if board_size.integer? && board_size > 2
       board_size
-    # else
-    #   raise VoidBoardSize
+    else
+      raise VoidBoardSizeError.new("Board size must be a positive integer greater than 2.")
     end
   end
 

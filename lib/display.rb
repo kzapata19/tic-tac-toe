@@ -1,6 +1,6 @@
 class Display
 
-  attr_reader :input, :output
+  attr_accessor :input, :output
 
   def initialize(input=STDIN, output=STDOUT)
     @input = input

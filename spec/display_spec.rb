@@ -22,7 +22,7 @@ describe Display do
     it "should display an empty board" do
       @display1.display_message(@board.game_board)
       expect(@output.string).to eq(
-      "\n_1_|_2_|_3_|\n\n_4_|_5_|_6_|\n\n_7_|_8_|_9_|\n\n")
+      "\n_01_|_02_|_03_|\n\n_04_|_05_|_06_|\n\n_07_|_08_|_09_|\n\n")
     end
 
   end
