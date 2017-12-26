@@ -1,11 +1,5 @@
 class Player
 
-  class VoidBoardSizeError < StandardError
-    def initialize(message)
-      super(message)
-    end
-  end
-
   attr_accessor :mark, :input
 
   def initialize(mark, input=STDIN)
