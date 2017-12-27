@@ -7,10 +7,10 @@ describe Board do
       expect(@board.grid).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
     end
 
-    it "should create a 3x3 grid by default" do
-      @board = Board.new
-      expect(@board.grid).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    end
+    # it "should create a 3x3 grid by default" do
+    #   @board = Board.new
+    #   expect(@board.grid).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    # end
 
   end
 
@@ -24,8 +24,8 @@ describe Board do
   end
 
   it "should have a grid size" do
-    @board = Board.new(4)
-    expect(@board.size).to eq(4)
+    @board = Board.new(3)
+    expect(@board.size).to eq(3)
   end
 
   it "should update the grid with player's mark" do
@@ -33,6 +33,10 @@ describe Board do
     expect(@board.update_grid(1, "X")).to eq(["X", 2, 3, 4, 5, 6, 7, 8, 9])
   end
 
+  it "should raise an error if player's move is outside grid size range" do
+    @board = Board.new(4)
+    expect {@board.update_grid(17, "X")}.to raise_error(Board::VoidMoveError)
+  end
 # this might have to go to Display not Board
   # it "should create the game board" do
   #   @board = Board.new(4)

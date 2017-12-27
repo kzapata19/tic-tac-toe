@@ -12,9 +12,15 @@ class Board
 
   end
 
+  class VoidMoveError < StandardError
+    def initialize(message)
+      super(message)
+    end
+  end
+
   attr_accessor :size, :grid, :board_numbers, :game_board
 
-  def initialize(size=3)
+  def initialize(size)
     @size = size
     self.check_board_size
     @grid = (1..@size**2).to_a
@@ -28,8 +34,13 @@ class Board
 
   def update_grid(location, mark)
     converted_location = location - 1
-    @grid[converted_location] = mark
-    @grid
+
+    if location.integer? && location.between?(1, @grid.size)
+      @grid[converted_location] = mark
+      @grid
+    else
+      raise VoidMoveError.new("Provide a number between 1 and #{@grid.size} inclusive")
+    end
   end
 
   # def create_board
