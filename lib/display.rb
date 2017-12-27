@@ -16,6 +16,38 @@ class Display
     get_player_input.to_i
   end
 
+  def print_game_board(board_content)
+    # ex: ["X", "02", "03", "04", "05", "06", "07", "08", "09"]
+    formatted_content = format_numbers(board_content)
+    row_length = Math.sqrt(formatted_content.length)
+    board = "\n"
+
+    formatted_content.each_with_index do |item, index|
+      if (index + 1) % row_length == 0
+        board = board + "_#{item}_|" + "\n\n"
+      else
+        board = board + "_#{item}_|"
+      end
+    end
+
+    display_message(board)
+  end
+
+  def format_numbers(board_content)
+    board_content.reduce([]) do|formatted, item|
+      formatted.push(prepend_leading_zero(item) || item)
+    end
+  end
+
+  def prepend_leading_zero(item)
+    # "%02d" % number if number.digits.count == 1
+    if item.is_a? String
+      item
+    elsif item.integer? && item.digits.count == 1
+      "%02d" % item
+    end
+  end
+
   def print_current_player_turn(player)
     display_message("Player #{player.mark}'s turn: ")
   end
