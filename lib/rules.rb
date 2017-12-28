@@ -1,13 +1,15 @@
 class Rules
 
- def is_tie?(board_grid)
+  def is_tie?(board_grid)
     emptySpace = false
+
     board_grid.each do |value|
       if value != "X" || value != "O"
         emptySpace = true
         break
       end
     end
+
     !winner?(board_grid) && !emptySpace
   end
 
@@ -23,6 +25,7 @@ class Rules
         winner = get_mark(moves)
       end
     end
+
     winner
   end
 
@@ -41,6 +44,7 @@ class Rules
         target_row = board_grid[start, row_length]
       end
     end
+
     horizontal_moves
   end
 
@@ -61,34 +65,32 @@ class Rules
         end
       end
 
-      if contains_winner?(vertical_moves)
-        break
+      contains_winner?(vertical_moves) ? break : pointer += 1
+
+    end
+
+    vertical_moves
+  end
+
+  def get_main_diagonal_win(board_grid)
+    diagonal_moves = []
+    diagonal_length = Math.sqrt(board_grid.length)
+
+    board_grid.each_with_index do|value, index|
+      if (index + diagonal_length + 1) % (diagonal_length + 1) == 0
+        diagonal_moves.push(value)
       else
-        pointer = pointer + 1
+        next
       end
     end
-    vertical_moves
+
+    diagonal_moves
   end
 
 ### NEEDS TO BE REFACTORED TO WORK FOR SINGLE ARRAY GRID
 
-  # def diagonal_winning_mark
-  #   get_main_diagonal_winning_mark || get_antidiagonal_winning_mark
-  # end
-
-  # def get_main_diagonal_winning_mark
-  #   winner = nil
-  #   array = []
-  #   target_index = 0
-  #   board.each do |row|
-  #     array.push(row[target_index])
-  #     target_index = target_index + 1
-  #   end
-
-  #   if get_mark(array)
-  #     winner = array[0]
-  #   end
-  #   winner
+  # def diagonal_win
+  #   get_main_diagonal_win || get_antidiagonal_win
   # end
 
   # def get_antidiagonal_winning_mark
@@ -99,12 +101,6 @@ class Rules
   #     array.push(row[target_index])
   #     target_index = target_index - 1
   #   end
-
-  #   if get_mark(array)
-  #     winner = array[0]
-  #   end
-  #   winner
-  # end
 
   def contains_winner?(moves)
     moves.uniq.length == 1
