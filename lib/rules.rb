@@ -46,16 +46,28 @@ class Rules
 
   def get_vertical_win(board_grid)
     vertical_moves = []
-    start = 0
+    pointer = 0
     col_length = Math.sqrt(board_grid.length)
 
-    while start < col_length
+    while pointer < col_length
+
       board_grid.each_with_index do|value, index|
-
+        if index == pointer
+          vertical_moves.push(value)
+        elsif index < pointer
+          next
+        elsif index % col_length == 0
+          vertical_moves.push(value)
+        end
       end
-      start = start + 1
-    end
 
+      if contains_winner?(vertical_moves)
+        break
+      else
+        pointer = pointer + 1
+      end
+    end
+    vertical_moves
   end
 
 ### NEEDS TO BE REFACTORED TO WORK FOR SINGLE ARRAY GRID
