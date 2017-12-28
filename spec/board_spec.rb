@@ -7,11 +7,6 @@ describe Board do
       expect(@board.grid).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
     end
 
-    # it "should create a 3x3 grid by default" do
-    #   @board = Board.new
-    #   expect(@board.grid).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    # end
-
   end
 
   it "should have a customizable size" do
@@ -37,10 +32,5 @@ describe Board do
     @board = Board.new(4)
     expect {@board.update_grid(17, "X")}.to raise_error(Board::VoidMoveError)
   end
-# this might have to go to Display not Board
-  # it "should create the game board" do
-  #   @board = Board.new(4)
-  #   expect(@board.game_board).to eq("\n_01_|_02_|_03_|_04_|\n\n_05_|_06_|_07_|_08_|\n\n_09_|_10_|_11_|_12_|\n\n_13_|_14_|_15_|_16_|\n\n")
-  # end
 
 end
