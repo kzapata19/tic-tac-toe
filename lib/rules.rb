@@ -10,7 +10,7 @@ class Rules
       end
     end
 
-    !winner?(board_grid) && !emptySpace
+    !winner?(board_grid) && emptySpace
   end
 
   def winner?(board_grid)
@@ -27,6 +27,10 @@ class Rules
     end
 
     winner
+  end
+
+  def get_mark(moves)
+    moves.uniq[0]
   end
 
   def get_horizontal_win(board_grid)
@@ -118,10 +122,6 @@ class Rules
 
   def contains_winner?(moves)
     moves.uniq.length == 1
-  end
-
-  def get_mark(moves)
-    moves.uniq[0]
   end
 
 end

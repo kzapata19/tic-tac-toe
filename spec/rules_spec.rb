@@ -31,19 +31,18 @@ describe Rules do
     expect(current_game.winner?(scenario)).to eq('X')
   end
 
-### TESTS BELOW MUST BE UPDATED FOR SINGLE ARRAY GRID
+  it "should check for a tie" do
+    scenario = ['O', 'X', 'X', 'X', 'O', 'O', 'X', 'O', 'X']
+    current_game = Rules.new
+    expect(current_game.is_tie?(scenario)).to eq(true)
+  end
 
-
-  # it "should check for a tie" do
-  #   scenario = ['O', 'X', 'X', 'X', 'O', 'O', 'X', 'O', 'X']
-  #   current_game = Rules.new
-  #   expect(current_game.is_tie?).to eq(true)
-  # end
-
-  # it "should not result in tie if empty space available" do
-  #   scenario = ['O', 'X', 'X', 'X', 'O', 'O','X', 'O', '09']
-  #   current_game = Rules.new
-  #   expect(current_game.is_tie?).to eq(false)
-  # end
+  context "when a board space is empty" do
+    it "should not result in a tie" do
+      scenario = ['O', 'X', 'X', 'X', 'O', 'O','X', 'O', '09']
+      current_game = Rules.new
+      expect(current_game.winner?(scenario)).to eq(false)
+    end
+  end
 
 end
