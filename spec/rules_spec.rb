@@ -19,13 +19,14 @@ describe Rules do
     expect(current_game.get_main_diagonal_win(scenario)).to eq(['X', 'X', 'X'])
   end
 
+  it "should check for a antidiagonal win" do
+    scenario = ['01', '02', 'X', '04', 'X', '06', 'X', '08', '09']
+    current_game = Rules.new
+    expect(current_game.get_diagonal_win(scenario)).to eq(['X', 'X', 'X'])
+  end
+
 ### TESTS BELOW MUST BE UPDATED FOR SINGLE ARRAY GRID
 
-  # it "should check for a antidiagonal win" do
-  #   scenario = ['01', '02', 'X', '04', 'X', '06', 'X', '08', '09']
-  #   current_game = Rules.new
-  #   expect(current_game.get_winning_mark).to eq('X')
-  # end
 
   # it "should check for a tie" do
   #   scenario = ['O', 'X', 'X', 'X', 'O', 'O', 'X', 'O', 'X']

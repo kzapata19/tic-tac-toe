@@ -23,6 +23,7 @@ class Rules
     [horiz, vert, diag].each do |moves|
       if contains_winner?(moves)
         winner = get_mark(moves)
+        break
       end
     end
 
@@ -72,6 +73,20 @@ class Rules
     vertical_moves
   end
 
+  def get_diagonal_win(board_grid)
+    diagonal_moves = [get_main_diagonal_win(board_grid), get_antidiagonal_win(board_grid)]
+
+    diagonal_moves.each do|moves|
+      if contains_winner?(moves)
+        diagonal_moves = moves
+      else
+        diagonal_moves = []
+      end
+    end
+
+    diagonal_moves
+  end
+
   def get_main_diagonal_win(board_grid)
     diagonal_moves = []
     diagonal_length = Math.sqrt(board_grid.length)
@@ -87,20 +102,20 @@ class Rules
     diagonal_moves
   end
 
-### NEEDS TO BE REFACTORED TO WORK FOR SINGLE ARRAY GRID
+  def get_antidiagonal_win(board_grid)
+    diagonal_moves = []
+    diagonal_length = Math.sqrt(board_grid.length)
 
-  # def diagonal_win
-  #   get_main_diagonal_win || get_antidiagonal_win
-  # end
+    board_grid.each_with_index do|value, index|
+      if (diagonal_length - 1 - index) % (diagonal_length - 1) == 0 && index != 0 && index != board_grid.length - 1
+        diagonal_moves.push(value)
+      else
+        next
+      end
+    end
 
-  # def get_antidiagonal_winning_mark
-  #   winner = nil
-  #   array = []
-  #   target_index = board.length - 1
-  #   board.each do |row|
-  #     array.push(row[target_index])
-  #     target_index = target_index - 1
-  #   end
+    diagonal_moves
+  end
 
   def contains_winner?(moves)
     moves.uniq.length == 1
