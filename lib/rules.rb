@@ -23,7 +23,6 @@ class Rules
     [horiz, vert, diag].each do |moves|
       if contains_winner?(moves)
         winner = get_mark(moves)
-        break
       end
     end
 

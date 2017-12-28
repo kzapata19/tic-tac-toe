@@ -25,6 +25,12 @@ describe Rules do
     expect(current_game.get_diagonal_win(scenario)).to eq(['X', 'X', 'X'])
   end
 
+  it "should return the winner's mark" do
+    scenario = ['01', '02', 'X', '04', 'X', '06', 'X', '08', '09']
+    current_game = Rules.new
+    expect(current_game.winner?(scenario)).to eq('X')
+  end
+
 ### TESTS BELOW MUST BE UPDATED FOR SINGLE ARRAY GRID
 
 
