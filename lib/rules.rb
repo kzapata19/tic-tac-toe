@@ -3,14 +3,13 @@ class Rules
   def is_tie?(board_grid)
     emptySpace = false
 
-    board_grid.each do |value|
+    board_grid.any? do |value|
       if value != "X" || value != "O"
         emptySpace = true
-        break
       end
     end
 
-    !winner?(board_grid) && emptySpace
+    !emptySpace && !winner?(board_grid)
   end
 
   def winner?(board_grid)
@@ -22,7 +21,7 @@ class Rules
 
     [horiz, vert, diag].each do |moves|
       if contains_winner?(moves)
-        winner = get_mark(moves)
+        winner = true
       end
     end
 
@@ -34,14 +33,14 @@ class Rules
   end
 
   def get_horizontal_win(board_grid)
-    horizontal_moves = []
+    horizontal_winning_moves = []
     start = 0
     row_length = Math.sqrt(board_grid.length)
     target_row = board_grid[start, row_length]
 
     while start < board_grid.length
       if contains_winner?(target_row)
-        horizontal_moves = target_row
+        horizontal_winning_moves = target_row
         break
       else
         start = start + row_length
@@ -49,75 +48,86 @@ class Rules
       end
     end
 
-    horizontal_moves
+    horizontal_winning_moves
   end
 
   def get_vertical_win(board_grid)
-    vertical_moves = []
+    vertical_winning_moves = []
     pointer = 0
     col_length = Math.sqrt(board_grid.length)
 
     while pointer < col_length
 
       board_grid.each_with_index do|value, index|
-        if index == pointer
-          vertical_moves.push(value)
-        elsif index < pointer
-          next
-        elsif index % col_length == 0
-          vertical_moves.push(value)
+        # if index == pointer
+        #   vertical_winning_moves.push(value)
+        #   p 'current vert moves inside if: #{vertical_winning_moves}'
+        # elsif index < pointer
+        #   p 'current vert moves inside else: #{vertical_winning_moves}'
+        #   next
+        #   # I THINK THE ISSUE IS HERE WITH col_length
+
+        if (index - pointer) % col_length == 0
+          vertical_winning_moves.push(value)
         end
       end
 
-      contains_winner?(vertical_moves) ? break : pointer += 1
-
-    end
-
-    vertical_moves
-  end
-
-  def get_diagonal_win(board_grid)
-    diagonal_moves = [get_main_diagonal_win(board_grid), get_antidiagonal_win(board_grid)]
-
-    diagonal_moves.each do|moves|
-      if contains_winner?(moves)
-        diagonal_moves = moves
+      if contains_winner?(vertical_winning_moves)
+        break
       else
-        diagonal_moves = []
+        pointer = pointer + 1
+        vertical_winning_moves = []
       end
     end
 
-    diagonal_moves
+    vertical_winning_moves
+  end
+
+  def get_diagonal_win(board_grid)
+    diagonal_winning_moves = [get_main_diagonal_win(board_grid), get_antidiagonal_win(board_grid)]
+
+    diagonal_winning_moves.each do|moves|
+      if contains_winner?(moves)
+        diagonal_winning_moves = moves
+        break
+      else
+        diagonal_winning_moves = []
+      end
+    end
+
+    diagonal_winning_moves
   end
 
   def get_main_diagonal_win(board_grid)
-    diagonal_moves = []
+    diagonal_winning_moves = []
     diagonal_length = Math.sqrt(board_grid.length)
 
     board_grid.each_with_index do|value, index|
       if (index + diagonal_length + 1) % (diagonal_length + 1) == 0
-        diagonal_moves.push(value)
+        diagonal_winning_moves.push(value)
       else
         next
       end
     end
 
-    diagonal_moves
+    !contains_winner?(diagonal_winning_moves) ?
+    diagonal_winning_moves = [] : diagonal_winning_moves
   end
 
   def get_antidiagonal_win(board_grid)
-    diagonal_moves = []
+    diagonal_winning_moves = []
     diagonal_length = Math.sqrt(board_grid.length)
 
     board_grid.each_with_index do|value, index|
       if (diagonal_length - 1 - index) % (diagonal_length - 1) == 0 && index != 0 && index != board_grid.length - 1
-        diagonal_moves.push(value)
+        diagonal_winning_moves.push(value)
       else
         next
       end
     end
 
-    diagonal_moves
+    !contains_winner?(diagonal_winning_moves)?
+    diagonal_winning_moves = [] : diagonal_winning_moves
   end
 
   def contains_winner?(moves)
