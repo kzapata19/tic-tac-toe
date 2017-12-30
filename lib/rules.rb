@@ -1,15 +1,6 @@
 class Rules
 
   def is_tie?(board_grid)
-    # emptySpace = false
-
-    # board_grid.each do |value|
-    #   if value != 'X' || value != 'O'
-    #     emptySpace = true
-    #   end
-    # end
-
-    # !emptySpace && !winner?(board_grid)
     if !empty_board_space?(board_grid) && !winner?(board_grid)
       true
     end
