@@ -1,15 +1,18 @@
 class Rules
 
   def is_tie?(board_grid)
-    emptySpace = false
+    # emptySpace = false
 
-    board_grid.any? do |value|
-      if value != "X" || value != "O"
-        emptySpace = true
-      end
+    # board_grid.each do |value|
+    #   if value != 'X' || value != 'O'
+    #     emptySpace = true
+    #   end
+    # end
+
+    # !emptySpace && !winner?(board_grid)
+    if !empty_board_space?(board_grid) && !winner?(board_grid)
+      true
     end
-
-    !emptySpace && !winner?(board_grid)
   end
 
   def winner?(board_grid)
@@ -132,6 +135,17 @@ class Rules
 
   def contains_winner?(moves)
     moves.uniq.length == 1
+  end
+
+  def empty_board_space?(board_grid)
+    empty = false
+
+    board_grid.each do|value|
+      if value != 'X' && value != 'O'
+        empty = true
+      end
+    end
+    empty
   end
 
 end

@@ -50,17 +50,28 @@ describe Rules do
     expect(current_game.winner?(losing_scenario)).to eq(false)
   end
 
+# FAILING THIS TEST!!!! LINE 58
   it "should check for a tie" do
-    scenario = ['O', 'X', 'X', 'X', 'O', 'O', 'X', 'O', 'X']
     current_game = Rules.new
+    scenario = ['O', 'X', 'X', 'X', 'O', 'O', 'X', 'O', 'X']
+
     expect(current_game.is_tie?(scenario)).to eq(true)
   end
 
   context "when a board space is empty" do
-    it "should not result in a tie" do
-      scenario = ['O', 'X', 'X', 'X', 'O', 'O','X', 'O', '09']
+    it "should detect an empty board space" do
       current_game = Rules.new
-      expect(current_game.is_tie?(scenario)).to eq(false)
+      empty_space = ['O', 'X', 'X', 'X', 'O', 'O','X', 'O', '09']
+      no_empty_space_and_tie = ['X', 'O', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O']
+
+      expect(current_game.empty_board_space?(empty_space)).to eq(true)
+      expect(current_game.empty_board_space?(no_empty_space_and_tie)).to eq(false)
+    end
+    it "should not result in a tie" do
+      current_game = Rules.new
+      scenario = ['O', 'X', 'X', 'X', 'O', 'O','X', 'O', '09']
+
+      expect(current_game.empty_board_space?(scenario)).to eq(true)
     end
   end
 
