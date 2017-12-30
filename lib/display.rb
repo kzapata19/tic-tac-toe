@@ -40,7 +40,6 @@ class Display
   end
 
   def prepend_leading_zero(item)
-    # "%02d" % number if number.digits.count == 1
     if item.is_a? String
       item
     elsif item.integer? && item.digits.count == 1
