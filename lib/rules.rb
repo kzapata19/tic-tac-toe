@@ -22,6 +22,7 @@ class Rules
     winner
   end
 
+# private
   def get_mark(moves)
     moves.uniq[0]
   end
