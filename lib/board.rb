@@ -30,6 +30,7 @@ class Board
     raise VoidBoardSizeError.new("Board size must be a positive integer greater than 2.") if @size < 3
   end
 
+#public method used by Game Session
   def update_grid(location, mark)
     converted_location = location - 1
 

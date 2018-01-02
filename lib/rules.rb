@@ -1,5 +1,6 @@
 class Rules
 
+#public methods used by Game Session
   def is_tie?(board_grid)
     if !empty_board_space?(board_grid) && !winner?(board_grid)
       true
@@ -22,7 +23,7 @@ class Rules
     winner
   end
 
-# private
+# helper/private methods
   def get_mark(moves)
     moves.uniq[0]
   end
@@ -54,14 +55,6 @@ class Rules
     while pointer < col_length
 
       board_grid.each_with_index do|value, index|
-        # if index == pointer
-        #   vertical_winning_moves.push(value)
-        #   p 'current vert moves inside if: #{vertical_winning_moves}'
-        # elsif index < pointer
-        #   p 'current vert moves inside else: #{vertical_winning_moves}'
-        #   next
-        #   # I THINK THE ISSUE IS HERE WITH col_length
-
         if (index - pointer) % col_length == 0
           vertical_winning_moves.push(value)
         end

@@ -7,6 +7,7 @@ class Display
     @output = output
   end
 
+#public methods for Game Session
   def print_welcome
     display_message("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.")
   end
@@ -33,22 +34,8 @@ class Display
     display_message(board)
   end
 
-  def format_numbers(board_content)
-    board_content.reduce([]) do|formatted, item|
-      formatted.push(prepend_leading_zero(item) || item)
-    end
-  end
-
-  def prepend_leading_zero(item)
-    if item.is_a? String
-      item
-    elsif item.integer? && item.digits.count == 1
-      "%02d" % item
-    end
-  end
-
   def print_current_player_turn(player)
-    display_message("Player #{player.mark}'s turn: ")
+    display_message("Player#{player.mark}'s turn: ")
   end
 
   def print_interim_msg
@@ -61,6 +48,21 @@ class Display
 
   def print_tie
     display_message("No winner. Tie game!\n")
+  end
+
+#helper/private methods below
+  def format_numbers(board_content)
+    board_content.reduce([]) do|formatted, item|
+      formatted.push(prepend_leading_zero(item) || item)
+    end
+  end
+
+  def prepend_leading_zero(item)
+    if item.is_a? String
+      item
+    elsif item.integer? && item.digits.count == 1
+      "%02d" % item
+    end
   end
 
   def display_message(msg)
