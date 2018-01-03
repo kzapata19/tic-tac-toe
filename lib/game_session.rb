@@ -1,19 +1,21 @@
 class GameSession
 
-  attr_accessor :player1, :player2, :display1, :board, :rules, :current_player
+  attr_accessor :player1, :player2, :display1, :board_size, :board, :rules, :current_player
 
-  def initialize(player1, player2, display1)
+  def initialize(player1, player2, display1, rules)
     @player1 = player1
     @player2 = player2
     @display1 = display1
-    board_size = display1.get_board_size
-    @board = Board.new(board_size)
-    @rules = Rules.new
+    # @board_size = @display1.get_board_size
+    # @board = nil
+    @rules = rules
     @current_player = @player2
   end
 
   def start_game
     @display1.print_welcome
+    @board_size = @display1.get_board_size
+    @board = Board.new(@board_size)
     @display1.print_game_board(@board.grid)
     run_game_loop
   end
@@ -25,10 +27,6 @@ class GameSession
     update_both_boards(location, @current_player.mark)
     display_current_board_status
   end
-
-  # def get_board_size
-  #   @display1.get_board_size
-  # end
 
   def display_current_board_status
     if @rules.winner?(@board.grid)
