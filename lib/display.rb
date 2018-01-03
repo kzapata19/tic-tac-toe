@@ -9,7 +9,7 @@ class Display
 
 #public methods for Game Session
   def print_welcome
-    display_message("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.")
+    display_message("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.\n")
   end
 
   def get_board_size
