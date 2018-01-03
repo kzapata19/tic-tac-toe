@@ -11,7 +11,7 @@ describe Display do
 
     it "should display a welcome message" do
     @display1.print_welcome
-    expect(@output.string).to eq("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.")
+    expect(@output.string).to eq("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.\n")
     end
 
     it "should ask for board size" do
@@ -45,7 +45,7 @@ describe Display do
   end
 
   it "should display current player's turn" do
-    @current_player = Player.new("X")
+    @current_player = Player.new(" X")
     @display1.print_current_player_turn(@current_player)
     expect(@output.string).to eq("Player X's turn: ")
   end
