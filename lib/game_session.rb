@@ -13,17 +13,17 @@ class GameSession
   def start_game
     @display1.print_welcome
     @board_size = @display1.get_board_size
-    # @board = Board.new(@board_size)
     @board = create_board
     @display1.print_game_board(@board.grid)
     run_game_loop
   end
 
+#helper/private methods
+private
   def create_board
     Board.new(@board_size)
   end
 
-#helper/private methods
   def run_game_loop
     switch_turns
     location = get_player_move

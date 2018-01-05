@@ -1,18 +1,23 @@
+require 'pry'
 describe GameSession do
 
   before(:each) do
-    @player1 = Player.new("X")
-    @player2 = Player.new("O")
-    @display1 = double("display1")
+    @player1 = Player.new(" X")
+    @player2 = Player.new(" O")
+    @display1 = Display.new
+    @rules = Rules.new
+    @game_session = GameSession.new(@player1, @player2, @display1, @rules)
 
-    @board = double("board")
-
-    @game_session = GameSession.new(@player1, @player2, @display1)
+    @input = StringIO.new
+    @input.string = 3
+    @output = StringIO.new
+    @game_session.start_game
   end
 
-  it "should switch player turns" do
-    @game_session.switch_turns
-    expect(@game_session.current_player).to eq(@game_session.player1)
+  it "should start the game" do
+
+
+    expect(@output.string).to eq("Please provide a number for the board size to build a proportional board: ")
   end
 
   it "should display a winning game result" do
@@ -24,7 +29,8 @@ describe GameSession do
 
   it "should display a tie game result" do
     @game_session.board.grid = ['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 'X']
-    expect(@game_session.display_current_board_status).to eq("No winner. Tie game!\n")
+
+    expect(@game_session.start_game).to eq("No winner. Tie game!\n")
   end
 
 end
