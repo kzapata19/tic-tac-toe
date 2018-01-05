@@ -13,11 +13,6 @@ class Player
 
   def provide_board_size
     board_size = @input.gets.to_i
-    # if board_size.integer? && board_size > 2
-    #   board_size
-    # else
-    #   raise VoidBoardSizeError.new("Board size must be a positive integer greater than 2.")
-    # end
   end
 
 end
