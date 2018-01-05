@@ -1,13 +1,11 @@
 class GameSession
 
-  attr_accessor :player1, :player2, :display1, :board_size, :board, :rules, :current_player
+  attr_accessor :player1, :player2, :display1, :rules, :board_size, :board, :current_player
 
   def initialize(player1, player2, display1, rules)
     @player1 = player1
     @player2 = player2
     @display1 = display1
-    # @board_size = @display1.get_board_size
-    # @board = nil
     @rules = rules
     @current_player = @player2
   end
@@ -15,19 +13,25 @@ class GameSession
   def start_game
     @display1.print_welcome
     @board_size = @display1.get_board_size
-    @board = Board.new(@board_size)
+    # @board = Board.new(@board_size)
+    @board = create_board
     @display1.print_game_board(@board.grid)
     run_game_loop
+  end
+
+  def create_board
+    Board.new(@board_size)
   end
 
 #helper/private methods
   def run_game_loop
     switch_turns
     location = get_player_move
-    update_both_boards(location, @current_player.mark)
+    update_board(location, @current_player.mark)
     display_current_board_status
   end
 
+# outgoing message to rules and display, is this considered a 'command' message? (the display print methods produce side-effects?)
   def display_current_board_status
     if @rules.winner?(@board.grid)
       @display1.print_winner(@current_player)
@@ -39,17 +43,19 @@ class GameSession
     end
   end
 
+# private GameSession method, dont test unless necessary (not sure if necessary)
   def switch_turns
     @current_player != player1 ? @current_player = player1 : @current_player = player2
   end
 
+# outgoing message to display and player, is this considered a 'command' message? (produces side-effect?)
   def get_player_move
     @display1.print_current_player_turn(@current_player)
     @current_player.provide_move
   end
-
-  def update_both_boards(location, player)
-    @board.update_grid(location, player)
+# outgoing message to board and display, is this considered a 'command' message? (produces side-effect?)
+  def update_board(location, player_mark)
+    @board.update_grid(location, player_mark)
     @display1.print_game_board(@board.grid)
   end
 
