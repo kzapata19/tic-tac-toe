@@ -18,7 +18,6 @@ class GameSession
     run_game_loop
   end
 
-#helper/private methods
 private
   def create_board
     Board.new(@board_size)
@@ -31,7 +30,6 @@ private
     display_current_board_status
   end
 
-# outgoing message to rules and display, is this considered a 'command' message? (the display print methods produce side-effects?)
   def display_current_board_status
     if @rules.winner?(@board.grid)
       @display1.print_winner(@current_player)
@@ -43,17 +41,15 @@ private
     end
   end
 
-# private GameSession method, dont test unless necessary (not sure if necessary)
   def switch_turns
     @current_player != player1 ? @current_player = player1 : @current_player = player2
   end
 
-# outgoing message to display and player, is this considered a 'command' message? (produces side-effect?)
   def get_player_move
     @display1.print_current_player_turn(@current_player)
     @current_player.provide_move
   end
-# outgoing message to board and display, is this considered a 'command' message? (produces side-effect?)
+
   def update_board(location, player_mark)
     @board.update_grid(location, player_mark)
     @display1.print_game_board(@board.grid)

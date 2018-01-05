@@ -7,7 +7,6 @@ class Display
     @output = output
   end
 
-#public methods used by Game Session
   def print_welcome
     display_message("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.\n")
   end
@@ -18,7 +17,6 @@ class Display
   end
 
   def print_game_board(board_content)
-    # ex: ["X", "02", "03", "04", "05", "06", "07", "08", "09"]
     formatted_content = format_numbers(board_content)
     row_length = Math.sqrt(formatted_content.length)
     board = "\n"
@@ -50,7 +48,6 @@ class Display
     display_message("No winner. Tie game!\n")
   end
 
-#helper/private methods below
 private
   def format_numbers(board_content)
     board_content.reduce([]) do|formatted, item|

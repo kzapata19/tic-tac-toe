@@ -1,6 +1,5 @@
 class Rules
 
-#public methods used by Game Session
   def is_tie?(board_grid)
     if !empty_board_space?(board_grid) && !winner?(board_grid)
       return true
@@ -9,7 +8,6 @@ class Rules
   end
 
   def winner?(board_grid)
-    # methods return an empty array if no win
     horiz = get_horizontal_win(board_grid)
     vert = get_vertical_win(board_grid)
     diag = get_diagonal_win(board_grid)
@@ -24,7 +22,6 @@ class Rules
     winner
   end
 
-# helper/private methods
 private
   def get_mark(moves)
     moves.uniq[0]
