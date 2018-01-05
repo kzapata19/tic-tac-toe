@@ -3,8 +3,9 @@ class Rules
 #public methods used by Game Session
   def is_tie?(board_grid)
     if !empty_board_space?(board_grid) && !winner?(board_grid)
-      true
+      return true
     end
+    false
   end
 
   def winner?(board_grid)
@@ -24,6 +25,7 @@ class Rules
   end
 
 # helper/private methods
+private
   def get_mark(moves)
     moves.uniq[0]
   end
