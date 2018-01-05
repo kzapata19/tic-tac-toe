@@ -7,7 +7,7 @@ class Display
     @output = output
   end
 
-#public methods for Game Session
+#public methods used by Game Session
   def print_welcome
     display_message("Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.\n")
   end
@@ -51,6 +51,7 @@ class Display
   end
 
 #helper/private methods below
+private
   def format_numbers(board_content)
     board_content.reduce([]) do|formatted, item|
       formatted.push(prepend_leading_zero(item) || item)
