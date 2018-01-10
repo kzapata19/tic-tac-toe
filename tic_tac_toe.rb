@@ -1,7 +1,7 @@
 require './lib/game_session'
 require './lib/player'
 require './lib/board'
-require './lib/rules'
+require './lib/outcome'
 require './lib/display'
 
 player1 = Player.new(' X')
