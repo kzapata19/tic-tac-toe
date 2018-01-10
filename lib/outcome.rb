@@ -1,4 +1,4 @@
-class Rules
+class Outcome
 
   def is_tie?(board_grid)
     if !empty_board_space?(board_grid) && !winner?(board_grid)

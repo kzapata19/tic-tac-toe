@@ -1,12 +1,12 @@
 class GameSession
 
-  attr_accessor :player1, :player2, :display1, :rules, :board_size, :board, :current_player
+  attr_accessor :player1, :player2, :display1, :outcome, :board_size, :board, :current_player
 
-  def initialize(player1, player2, display1, rules)
+  def initialize(player1, player2, display1, outcome)
     @player1 = player1
     @player2 = player2
     @display1 = display1
-    @rules = rules
+    @outcome = outcome
     @current_player = @player2
   end
 
@@ -31,11 +31,11 @@ private
   end
 
   def display_current_board_status
-    if @rules.winner?(@board.grid)
+    if @outcome.winner?(@board.grid)
       @display1.print_winner(@current_player)
-    elsif @rules.is_tie?(@board.grid)
+    elsif @outcome.is_tie?(@board.grid)
       @display1.print_tie
-    else !@rules.winner?(@board.grid) || !@rules.is_tie?(@board.grid)
+    else !@outcome.winner?(@board.grid) || !@outcome.is_tie?(@board.grid)
       @display1.print_interim_msg
       run_game_loop
     end
