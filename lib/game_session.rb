@@ -31,11 +31,13 @@ private
   end
 
   def display_current_board_status
-    if @outcome.winner?(@board.grid)
+    full_board = @board.full_board?(@board.grid)
+
+    if @outcome.winner?(@board.get_all_move_combos)
       @display1.print_winner(@current_player)
-    elsif @outcome.is_tie?(@board.grid)
+    elsif @outcome.is_tie?(@board.get_all_move_combos, full_board)
       @display1.print_tie
-    else !@outcome.winner?(@board.grid) || !@outcome.is_tie?(@board.grid)
+    else !@outcome.winner?(@board.get_all_move_combos) || !@outcome.is_tie?(@board.get_all_move_combos)
       @display1.print_interim_msg
       run_game_loop
     end
