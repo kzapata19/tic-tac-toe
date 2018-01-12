@@ -1,29 +1,31 @@
 class Outcome
 
-  def is_tie?(board)
+  def is_tie?(moves)
     if !empty_board_space?(board) && !winner?(board_grid)
       return true
     end
     false
   end
 
-  def winner?(all_moves)
-
+  def winner?(all_move_combos)
     winner = false
-
-    all_moves.each do |moves|
-      if contains_winner?(moves)
+    all_move_combos.each do |set_of_moves|
+      if set_of_moves.uniq.length == 1
         winner = true
+        break
       end
     end
-
     winner
   end
 
-private
-  def get_mark(moves)
-    moves.uniq[0]
-  end
+# private
+  # def contains_winner?(moves)
+  #   moves.uniq.length == 1
+  # end
+
+  # def get_mark(moves)
+  #   moves.uniq[0]
+  # end
 
   # def get_horizontal_win(board_grid)
   #   horizontal_winning_moves = []
@@ -115,19 +117,17 @@ private
   #   diagonal_winning_moves = [] : diagonal_winning_moves
   # end
 
-  def contains_winner?(moves)
-    moves.uniq.length == 1
-  end
 
-  def empty_board_space?(moves)
-    empty = false
 
-    moves.each do|value|
-      if value != 'X' && value != 'O'
-        empty = true
-      end
-    end
-    empty
-  end
+  # def empty_board_space?(moves)
+  #   empty = false
+
+  #   moves.each do|value|
+  #     if value != 'X' && value != 'O'
+  #       empty = true
+  #     end
+  #   end
+  #   empty
+  # end
 
 end
