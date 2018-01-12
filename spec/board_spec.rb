@@ -33,4 +33,36 @@ describe Board do
     expect {@board.update_grid(17, "X")}.to raise_error(Board::VoidMoveError)
   end
 
+  it "should place each row's content in an array" do
+    @board = Board.new(3)
+    expect(@board.get_all_rows).to eq([[1,2,3], [4,5,6], [7,8,9]])
+  end
+
+  it "should place each column's content in an array" do
+    @board = Board.new(3)
+    expect(@board.get_all_columns).to eq([[1,4,7], [2,5,8], [3,6,9]])
+  end
+
+  it "should place the antidiagonal's content in an array" do
+
+    @board = Board.new(3)
+    expect(@board.get_antidiagonal).to eq([3,5,7])
+  end
+
+  it "should place the main diagonal's content in an array" do
+
+    @board = Board.new(3)
+    expect(@board.get_main_diagonal).to eq([1,5,9])
+  end
+
+  it "should place both diagonals in an array" do
+    @board = Board.new(3)
+    expect(@board.get_diagonals).to eq([[1,5,9], [3,5,7]])
+  end
+
+  it "should get all possible move combinations" do
+    @board = Board.new(3)
+    expect(@board.get_all_move_combos).to eq([[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]])
+  end
+
 end
