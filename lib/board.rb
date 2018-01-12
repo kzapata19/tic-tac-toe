@@ -41,6 +41,10 @@ class Board
     end
   end
 
+  def full_board?(board_grid)
+    board_grid.uniq.length == 2
+  end
+
   def get_all_move_combos
     combinations = [get_all_rows, get_all_columns, get_diagonals]
 
