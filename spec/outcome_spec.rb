@@ -1,10 +1,13 @@
 describe Outcome do
 
-  it "should check for a horizontal win" do
+  it "should check for all types of horizontal wins" do
     current_game = Outcome.new
-    scenario = ['X', 'X', 'X']
-
-    expect(current_game.winner?(scenario)).to eq(false)
+    top_horizontal_win = [["X", "O", "03"], ["04", "O", "O"], ["X", "X", "X"], ["X", "04", "X"], ["O", "O", "X"], ["03", "O", "X"], ["X", "O", "X"], ["03", "O", "X"]]
+    mid_horizontal_win = [["X", "02", "03"], ["O", "O", "O"], ["X", "X", "09"], ["X", "O", "X"], ["02", "O", "X"], ["03", "O", "09"], ["X", "O", "09"], ["03", "O", "X"]]
+    bottom_horizontal_win = [["01", "O", "X"], ["O", "O", "06"], ["X", "X", "X"], ["01", "O", "X"], ["O", "O", "X"], ["X", "06", "X"], ["01", "O", "X"], ["X", "O", "X"]]
+    expect(current_game.winner?(top_horizontal_win)).to be_truthy
+    expect(current_game.winner?(mid_horizontal_win)).to be_truthy
+    expect(current_game.winner?(bottom_horizontal_win)).to be_truthy
   end
 
   it "should check for all types of vertical wins" do
@@ -42,16 +45,16 @@ describe Outcome do
   it "should return true for a tie game" do
     current_game = Outcome.new
     tie_scenario = [["O", "X", "X"], ["X", "O", "O"], ["X", "O", "X"], ["O", "X", "X"], ["X", "O", "O"], ["X", "O", "X"], ["O", "O", "X"], ["X", "O", "X"]]
-
-    expect(current_game.is_tie?(tie_scenario)).to be_truthy
+    full_board = true
+    expect(current_game.is_tie?(tie_scenario, full_board )).to be_truthy
   end
 
   context "when a board space is empty" do
     it "should not result in a tie" do
       current_game = Outcome.new
-      scenario = ['O', 'X', 'X', 'X', 'O', 'O','X', 'O', '09']
-
-      expect(current_game.is_tie?(scenario)).to eq(false)
+      scenario = [["O", "X", "X"], ["X", "O", "O"], ["X", "O", "09"], ["O", "X", "X"], ["X", "O", "O"], ["X", "O", "09"], ["O", "O", "09"], ["X", "O", "X"]]
+      full_board = false
+      expect(current_game.is_tie?(scenario, full_board)).to be_falsy
     end
   end
 
