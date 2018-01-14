@@ -1,4 +1,5 @@
 class Initializer
+
   attr_accessor :input, :output, :board
 
   def initialize(input=STDIN, output=STDOUT)

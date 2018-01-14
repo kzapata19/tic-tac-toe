@@ -6,6 +6,7 @@ describe Initializer do
     @input.string = "3"
     @output.string = "Please provide a number for the board size to build a proportional board: "
     @initializer = Initializer.new(@input, @output)
+
     expect(@initializer.board).to be_an_instance_of(Board)
   end
 
