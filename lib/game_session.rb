@@ -2,27 +2,23 @@ class GameSession
 
   attr_accessor :player1, :player2, :display1, :outcome, :board_size, :board, :current_player
 
-  def initialize(player1, player2, display1, outcome)
+  def initialize(player1, player2, display1, outcome, initializer)
     @player1 = player1
     @player2 = player2
     @display1 = display1
     @outcome = outcome
+    @board = initializer.board
     @current_player = @player2
+
   end
 
   def start_game
     @display1.print_welcome
-    @board_size = @display1.get_board_size
-    @board = create_board
     @display1.print_game_board(@board.grid)
     run_game_loop
   end
 
 private
-  def create_board
-    Board.new(@board_size)
-  end
-
   def run_game_loop
     switch_turns
     location = get_player_move
