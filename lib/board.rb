@@ -19,8 +19,6 @@ class Board
     if location.integer? && location.between?(1, @grid.size)
       @grid[converted_location] = mark
       @grid
-    else
-      raise VoidMoveError.new("Provide a number between 1 and #{@grid.size} inclusive")
     end
   end
 
