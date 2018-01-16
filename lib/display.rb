@@ -48,6 +48,10 @@ class Display
     display_message("No winner. Tie game!\n")
   end
 
+  def display_message(msg)
+    @output.print msg
+  end
+
 private
   def format_numbers(board_content)
     board_content.reduce([]) do|formatted, item|
@@ -61,10 +65,6 @@ private
     elsif item.integer? && item.digits.count == 1
       "%02d" % item
     end
-  end
-
-  def display_message(msg)
-    @output.print msg
   end
 
   def get_player_input
