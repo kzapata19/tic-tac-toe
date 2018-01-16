@@ -30,7 +30,7 @@ private
     begin
       location = get_player_move
       if !valid_move?(location)
-        raise VoidMoveError.new("Provide a number between 1 and #{@board.grid.size} inclusive. Try again...")
+        raise VoidMoveError.new("'#{location}' is out of range. Provide a number between 1 and #{@board.grid.size} inclusive. Try again...")
       end
     rescue VoidMoveError=>e
        @display1.display_message("#{e.message}\n")
