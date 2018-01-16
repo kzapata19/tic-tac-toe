@@ -20,12 +20,12 @@ class Initializer
   def get_board_size
     size = 0
     @output.print "Please provide a number for the board size to build a proportional board: "
-    while size < 3
+    until size >= 3
       begin
         size = @input.gets.to_i
-        raise VoidBoardSizeError.new("Board size must be a positive integer greater than 2. Try again...")
+        raise VoidBoardSizeError.new("Board size '#{size}' invalid. Size must be a positive integer greater than 2. Try again...")
       rescue VoidBoardSizeError=>e
-        @output.print e.message
+        @output.print "#{e.message}\n"
       end
     end
     size
