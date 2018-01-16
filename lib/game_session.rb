@@ -1,5 +1,11 @@
 class GameSession
 
+  class VoidMoveError < StandardError
+    def initialize(message)
+      super(message)
+    end
+  end
+
   attr_accessor :player1, :player2, :display1, :outcome, :board_size, :board, :current_player
 
   def initialize(player1, player2, display1, outcome, initializer)
@@ -21,9 +27,21 @@ class GameSession
 private
   def run_game_loop
     switch_turns
-    location = get_player_move
+    begin
+      location = get_player_move
+      if !valid_move?(location)
+        raise VoidMoveError.new("Provide a number between 1 and #{@board.grid.size} inclusive. Try again...")
+      end
+    rescue VoidMoveError=>e
+       @display1.display_message("#{e.message}\n")
+      retry
+    end
     update_board(location, @current_player.mark)
     display_current_board_status
+  end
+
+  def valid_move?(location)
+    location > 0 && location <= @board.grid.size
   end
 
   def display_current_board_status
