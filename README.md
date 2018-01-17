@@ -14,14 +14,15 @@ The typical board size of a Tic-tac-toe game is a 3x3 board but my program can h
 
 Player 'X' will always be the first to mark the board, then Player 'O' will follow alternating turns until there is a winner or a tie.
 
-Here is a sample of an empty 3x3 board
-`
+Here is a sample of an empty 3x3 board:
+
+```
 _01_|_02_|_03_|
 
 _04_|_05_|_06_|
 
 _07_|_08_|_09_|
-`
+```
 
 #### Setup
 
@@ -33,14 +34,16 @@ To start the game, run `ruby tic-tac-toe.rb` within the root directory.
 
 - A welcome message will appear, the empty board will be displayed, and Player X will be asked for their move
 
-`Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.`
-`
+```
+Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.
+
 _01_|_02_|_03_|
 
 _04_|_05_|_06_|
 
 _07_|_08_|_09_|
-`
-`Player X's turn: `
+
+Player X's turn:
+```
 
 To place your mark on the board, enter the number for the corresponding space. For numbers 1-9, the leading zero is optional.
