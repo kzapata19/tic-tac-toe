@@ -47,3 +47,12 @@ Player X's turn:
 ```
 
 To place your mark on the board, enter the number for the corresponding space. For numbers 1-9, the leading zero is optional.
+
+Here is an example of a partially filled 3x3 board:
+```
+_ X_|_ O_|_03_|
+
+_ X_|_05_|_06_|
+
+_ O_|_08_|_ X_|
+```
