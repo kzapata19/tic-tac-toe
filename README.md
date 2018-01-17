@@ -28,11 +28,11 @@ _07_|_08_|_09_|
 
 To start the game, run `ruby tic-tac-toe.rb` within the root directory.
 
-- You will be prompted to provide a size for the board
+You will be prompted to provide a size for the board
 
 `Please provide a number for the board size to build a proportional board: `
 
-- A welcome message will appear, the empty board will be displayed, and Player X will be asked for their move
+A welcome message will appear, the empty board will be displayed, and Player X will be asked for their move
 
 ```
 Welcome to TicTacToe! Player 1 is 'X' and Player 2 is 'O'.
