@@ -1,12 +1,5 @@
 class Initializer
   class VoidBoardSizeError < StandardError
-    # attr_reader :action
-    # def initialize(message)
-    #   # call parent's constructor to set the message
-    #   super(message)
-    #   # store action in instance variable
-    #   # @action = action
-    # end
   end
 
   attr_accessor :input, :output, :board
