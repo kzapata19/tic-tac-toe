@@ -70,7 +70,6 @@ class Board
     diagonal_moves = []
     @diagonal_length = @size
 
-
     @grid.each_with_index do|value, index|
       if on_antidiagonal_row?(index)
         diagonal_moves.push(value)
@@ -79,10 +78,6 @@ class Board
       end
     end
     diagonal_moves
-  end
-
-  def on_antidiagonal_row?(index)
-    (@diagonal_length - 1 - index) % (@diagonal_length - 1) == 0 && index != 0 && index != @grid.length - 1
   end
 
   def get_main_diagonal
@@ -98,6 +93,11 @@ class Board
     end
 
     diagonal_moves
+  end
+
+private
+  def on_antidiagonal_row?(index)
+    (@diagonal_length - 1 - index) % (@diagonal_length - 1) == 0 && index != 0 && index != @grid.length - 1
   end
 
   def on_main_diagonal_row?(index)
