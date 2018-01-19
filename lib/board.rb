@@ -1,11 +1,5 @@
 class Board
 
-  # class VoidMoveError < StandardError
-  #   def initialize(message)
-  #     super(message)
-  #   end
-  # end
-
   attr_accessor :size, :grid
 
   def initialize(size)
@@ -74,10 +68,11 @@ class Board
 
   def get_antidiagonal
     diagonal_moves = []
-    diagonal_length = @size
+    @diagonal_length = @size
+
 
     @grid.each_with_index do|value, index|
-      if (diagonal_length - 1 - index) % (diagonal_length - 1) == 0 && index != 0 && index != @grid.length - 1
+      if on_antidiagonal_row?(index)
         diagonal_moves.push(value)
       else
         next
@@ -86,12 +81,16 @@ class Board
     diagonal_moves
   end
 
+  def on_antidiagonal_row?(index)
+    (@diagonal_length - 1 - index) % (@diagonal_length - 1) == 0 && index != 0 && index != @grid.length - 1
+  end
+
   def get_main_diagonal
     diagonal_moves = []
-    diagonal_length = @size
+    @diagonal_length = @size
 
     @grid.each_with_index do|value, index|
-      if (index + diagonal_length + 1) % (diagonal_length + 1) == 0
+      if on_main_diagonal_row?(index)
         diagonal_moves.push(value)
       else
         next
@@ -99,6 +98,10 @@ class Board
     end
 
     diagonal_moves
+  end
+
+  def on_main_diagonal_row?(index)
+    (index + @diagonal_length + 1) % (@diagonal_length + 1) == 0
   end
 
 end
