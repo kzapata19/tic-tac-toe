@@ -1,6 +1,6 @@
 class Outcome
 
-  def is_tie?(all_move_combos, is_board_full)
+  def tie?(all_move_combos, is_board_full)
     is_board_full && !has_winner?(all_move_combos)
   end
 

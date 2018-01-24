@@ -3,7 +3,7 @@ describe Outcome do
     @current_game = Outcome.new
   end
 
-  it "should return true for all types of horizontal wins" do
+  it "returns true for all types of horizontal wins" do
     top_horizontal_win = [
       ["X",  "O",  "03"],
       ["04", "O",  "O"],
@@ -39,7 +39,7 @@ describe Outcome do
     expect(@current_game.has_winner?(bottom_horizontal_win)).to be_truthy
   end
 
-  it "should return true for all types of vertical wins" do
+  it "returns true for all types of vertical wins" do
     left_col_win = [
       ["X", "X", "O"],
       ["X", "O", "O"],
@@ -75,7 +75,7 @@ describe Outcome do
     expect(@current_game.has_winner?(right_col_win)).to be_truthy
   end
 
-  it "should return true for a main diagonal win" do
+  it "returns true for a main diagonal win" do
     main_diagonal_win= [
       ["X",  "02", "03"],
       ["04", "X",  "06"],
@@ -89,7 +89,7 @@ describe Outcome do
     expect(@current_game.has_winner?(main_diagonal_win)).to be_truthy
   end
 
-  it "should return true for an antidiagonal win" do
+  it "returns true for an antidiagonal win" do
     anti_diagonal_win = [
       ["01", "02", "X"],
       ["04", "X",  "06"],
@@ -103,7 +103,7 @@ describe Outcome do
     expect(@current_game.has_winner?(anti_diagonal_win)).to be_truthy
   end
 
-  it "should return false when no winner" do
+  it "returns false when no winner" do
     tie_scenario = [
       ["O", "X", "X"],
       ["X", "O", "O"],
@@ -117,7 +117,7 @@ describe Outcome do
     expect(@current_game.has_winner?(tie_scenario)).to be_falsy
   end
 
-  it "should return true for a tie game" do
+  it "returns true for a tie game" do
     tie_scenario = [
       ["O", "X", "X"],
       ["X", "O", "O"],
@@ -129,11 +129,11 @@ describe Outcome do
       ["X", "O", "X"]
     ]
     full_board = true
-    expect(@current_game.is_tie?(tie_scenario, full_board )).to be_truthy
+    expect(@current_game.tie?(tie_scenario, full_board )).to be_truthy
   end
 
   context "when a board space is empty" do
-    it "should not result in a tie" do
+    it "does not result in a tie" do
       scenario = [
         ["O", "X", "X"],
         ["X", "O", "O"],
@@ -145,7 +145,7 @@ describe Outcome do
         ["X", "O", "X"]
       ]
       full_board = false
-      expect(@current_game.is_tie?(scenario, full_board)).to be_falsy
+      expect(@current_game.tie?(scenario, full_board)).to be_falsy
     end
   end
 

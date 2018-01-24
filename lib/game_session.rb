@@ -6,16 +6,15 @@ class GameSession
     end
   end
 
-  attr_accessor :player1, :player2, :display, :outcome, :board_size, :board, :current_player
+  attr_accessor :player1, :player2, :display, :outcome, :board, :current_player
 
-  def initialize(player1, player2, display, outcome, initializer)
+  def initialize(player1, player2, display, outcome, board)
     @player1 = player1
     @player2 = player2
     @display = display
     @outcome = outcome
-    @board = initializer.board
+    @board = board
     @current_player = @player2
-
   end
 
   def start_game
@@ -24,7 +23,6 @@ class GameSession
     run_game_loop
   end
 
-private
   def run_game_loop
     switch_turns
     begin
@@ -45,11 +43,11 @@ private
   end
 
   def display_current_board_status
-    full_board = @board.full_board?(@board.grid)
+    full_board = @board.full?(@board.grid)
 
     if @outcome.has_winner?(@board.get_all_move_combos)
       @display.print_winner(@current_player)
-    elsif @outcome.is_tie?(@board.get_all_move_combos, full_board)
+    elsif @outcome.tie?(@board.get_all_move_combos, full_board)
       @display.print_tie
     else
       @display.print_interim_msg

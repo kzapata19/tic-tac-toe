@@ -16,7 +16,7 @@ class Board
     end
   end
 
-  def full_board?(board_grid)
+  def full?(board_grid)
     board_grid.uniq.length == 2
   end
 
