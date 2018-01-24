@@ -10,12 +10,14 @@ describe Initializer do
     expect(@board.size).to eq(4)
   end
 
-  # it "raises error if board size is less than 3" do
-  #   @input = StringIO.new
-  #   @output = StringIO.new
-  #   @input.string = "2"
-  #   @display = Display.new(@input, @output)
+# When below test runs, it just hangs in the terminal
+  it "raises error if board size is less than 3" do
+    @input = StringIO.new
+    @output = StringIO.new
+    # 2 is an invalid board size that should raise the VoidBoardSizeError
+    @input.string = "2"
+    @display = Display.new(@input, @output)
 
-  #   expect { Initializer.new(@display) }.to raise_error("Board size is invalid. Size must be a positive integer greater than 2. Try again...")
-  # end
+    expect { Initializer.new(@display) }.to raise_error("Board size is invalid. Size must be a positive integer greater than 2. Try again...")
+  end
 end
