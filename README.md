@@ -4,6 +4,11 @@
 
 Welcome to my Tic-tac-toe game written in the beautiful language Ruby
 
+### Requirements
+
+- Ruby version 2.4.0 or higher
+- This game was built using Rspec version 3.7. Within the root directory, run `bundle install` and then `rspec` to run all tests.
+
 ### Let's Play!
 
 #### Rules
@@ -56,7 +61,3 @@ _ X_|_05_|_06_|
 
 _ O_|_08_|_ X_|
 ```
-
-### How to Run Tests
-
-This game was built using Rspec version 3.7. Within the root directory, run `bundle install` and then `rspec` to run all tests.
