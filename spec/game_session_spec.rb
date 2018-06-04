@@ -1,11 +1,13 @@
 describe GameSession do
 
   before(:all) do
-    @input = StringIO.new
-    @output = StringIO.new
-    @input.string = "3"
+    # @input = StringIO.new
+    # @output = StringIO.new
+    # @input.string = "3"
     @player1 = Player.new(" X")
     @player2 = Player.new(" O")
+    @input = StringIO.new
+    @output = StringIO.new
     @display = Display.new(@input, @output)
     @outcome = Outcome.new
     @initializer = Initializer.new(@display)
@@ -16,6 +18,11 @@ describe GameSession do
   #   @game_session.start_game
   #   expect(@game_session).to receive(:start_game)
   # end
+
+  it "gets the player's move" do
+    @input.string = "4"
+    expect(@game_session.get_player_move).to eq(4)
+  end
 
   it "displays a winning game result" do
     allow(@display).to receive(:print_game_board).and_return("\n_'X_|_'O'_|_'X'_|\n\n_'X'_|_'O'_|_'O'_|\n\n_'X'_|_'X'_|_'O'_|\n\n")
